@@ -25,6 +25,8 @@ public class InAppCommentDemo : MonoBehaviour
 
     public void ShowInAppComment()
     {
-       
+        Debug.Log("ShowInAppComment");
+
+        InAppComment.ShowInAppComment();
     }
 }

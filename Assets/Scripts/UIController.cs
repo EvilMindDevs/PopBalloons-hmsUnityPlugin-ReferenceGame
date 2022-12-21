@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using HuaweiMobileServices.Analystics;
-using HuaweiMobileServices.Utils;
+//using HuaweiMobileServices.Analystics;
+//using HuaweiMobileServices.Utils;
 using UnityEngine.UI;
 using System.Net.Mail;
-using HuaweiMobileServices.Game;
-using HmsPlugin;
-using HuaweiMobileServices.InAppComment;
+//using HuaweiMobileServices.Game;
+//using HmsPlugin;
+//using HuaweiMobileServices.InAppComment;
 
 public class UIController : MonoBehaviour
 {
@@ -19,15 +19,15 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI blueBalloonCountValue;
     public TextMeshProUGUI greenBalloonCountValue;
 
-    HMSAnalyticsKitManager analyticsKitManager;
+    //HMSAnalyticsKitManager analyticsKitManager;
    
 
 
     private void Start()
     {
         Debug.Log("ShowInAppComment");
-        InAppComment.ShowInAppComment();
-        analyticsKitManager = HMSAnalyticsKitManager.Instance;
+        //InAppComment.ShowInAppComment();
+        //analyticsKitManager = HMSAnalyticsKitManager.Instance;
         gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         
@@ -60,7 +60,7 @@ public class UIController : MonoBehaviour
         blueBalloonCountValue.SetText(("Blue Balloon Count: " + clickToPop.BlueBalloonCount));
         greenBalloonCountValue.SetText(("Green Balloon Count: " + clickToPop.GreenBalloonCount));
 
-        analyticsKitManager.SendEventWithBundle("BlackBalloonPop", "BlackBalloon" , (clickToPop.BlackBalloonCount).ToString());
+        //analyticsKitManager.SendEventWithBundle("BlackBalloonPop", "BlackBalloon" , (clickToPop.BlackBalloonCount).ToString());
         
         
        

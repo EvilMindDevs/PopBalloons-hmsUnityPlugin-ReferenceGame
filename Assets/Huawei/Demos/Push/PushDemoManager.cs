@@ -1,4 +1,7 @@
 ﻿using HmsPlugin;
+
+using HuaweiMobileServices.Base;
+using HuaweiMobileServices.Id;
 using HuaweiMobileServices.Push;
 using HuaweiMobileServices.Utils;
 
@@ -13,9 +16,17 @@ public class PushDemoManager : MonoBehaviour
     private string pushToken;
     private Text remoteMessageText, tokenText;
 
+    private void Awake()
+    {
+        remoteMessageText = GameObject.Find("RemoteMessageText").GetComponent<Text>();
+        tokenText = GameObject.Find("PushToken").GetComponent<Text>();
+    }
 
     void Start()
     {
+        /*
+         * When using multiple kits, we recommend initializing the push kit with the coroutine.
+         */
         Debug.Log("[HMS] Push Start");
         StartCoroutine(LateStart(0f));
     }
@@ -50,7 +61,9 @@ public class PushDemoManager : MonoBehaviour
         Debug.Log("[HMSPushDemo] MsgId: " + data.MsgId);
         Debug.Log("[HMSPushDemo] NotifyId: " + data.NotifyId);
         Debug.Log("[HMSPushDemo] KeyValueJSON: " + data.KeyValueJSON);
-        
+        /* TODO: Make your own logic here
+         * notificationDataOnStart = data;
+         */
     }
 
     public void OnNewToken(string token)

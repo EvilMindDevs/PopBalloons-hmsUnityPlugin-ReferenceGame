@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class RemoteConfigDemo : MonoBehaviour
 {
-    public Text countOfVariables;
+    private Text countOfVariables;
     private readonly string TAG = "[HMS] RemoteConfigDemo";
 
     #region Singleton

@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class AccountUIView : MonoBehaviour
 {
 
-    public Button Btn_Login;
-    public Button Btn_SilentLogin;
-    public Button Btn_Logout;
+    private Button Btn_Login;
+    private Button Btn_SilentLogin;
+    private Button Btn_Logout;
 
     private Text AccountKitState;
 
@@ -17,9 +17,9 @@ public class AccountUIView : MonoBehaviour
 
     private void Awake()
     {
-        //Btn_Login = GameObject.Find("Button - LogIn").GetComponent<Button>();
-        //Btn_SilentLogin = GameObject.Find("Button - SilentLogIn").GetComponent<Button>();
-        //Btn_Logout = GameObject.Find("Button - LogOut").GetComponent<Button>();
+        Btn_Login = GameObject.Find("Button - LogIn").GetComponent<Button>();
+        Btn_SilentLogin = GameObject.Find("Button - SilentLogIn").GetComponent<Button>();
+        Btn_Logout = GameObject.Find("Button - LogOut").GetComponent<Button>();
 
         AccountKitState = GameObject.Find("Text - Status").GetComponent<Text>();
     }

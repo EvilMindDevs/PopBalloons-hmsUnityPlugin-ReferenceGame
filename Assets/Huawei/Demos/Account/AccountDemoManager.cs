@@ -71,7 +71,6 @@ public class AccountDemoManager : MonoBehaviour
     public void OnLoginSuccess(AuthAccount authHuaweiId)
     {
         AccountKitLog?.Invoke(string.Format(LOGGED_IN, authHuaweiId.DisplayName));
-        
     }
 
     public void OnLoginFailure(HMSException error)

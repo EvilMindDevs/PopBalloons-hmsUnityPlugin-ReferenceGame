@@ -26,21 +26,21 @@
 		"SG_back":"connect-ws-dra.hispace.dbankcloud.com"
 	},
 	"client":{
-		"cp_id":"30090000034047514",
-		"product_id":"99536292102747077",
-		"client_id":"1025631008713624896",
-		"client_secret":"DB69D7A060D64C832F1503DA20A37E7334BF48AF286C47AF2D62FAEC978DA43D",
-		"project_id":"99536292102747077",
-		"app_id":"107382635",
-		"api_key":"DAEDAGKNoKjRHeMA2ZO6BSXCtQKm3XRSIDM1QRQ1U8PLBmVRAj9jxDxGTTisMya1BetFDQ3jIZybmqlrNmysVNn5aE0cnZvCtxLlwg==",
+		"cp_id":"890090000023105639",
+		"product_id":"99536292102849174",
+		"client_id":"1050954712657972352",
+		"client_secret":"EF077DDB89DB885CCFD54FCB47EBC87653CA75FBE2AE7998AEBAFF51E51A34F0",
+		"project_id":"99536292102849174",
+		"app_id":"107513251",
+		"api_key":"DAEDAPE1z+/JprmS04wGnIRMTChe+woAd6jdSqsDiV/JHF8LMxvGpcoGGk8EOEDa1wPZVjlU6NoyTmcjYcgm3c3u9RNujsLDb0TXTg==",
 		"package_name":"com.HilisCompany.PopTheBalloons.huawei"
 	},
 	"oauth_client":{
-		"client_id":"107382635",
+		"client_id":"107513251",
 		"client_type":1
 	},
 	"app_info":{
-		"app_id":"107382635",
+		"app_id":"107513251",
 		"package_name":"com.HilisCompany.PopTheBalloons.huawei"
 	},
 	"service":{
@@ -77,15 +77,15 @@
 		{
 			"package_name":"com.HilisCompany.PopTheBalloons.huawei",
 			"client":{
-				"app_id":"107382635"
+				"app_id":"107513251"
 			},
 			"app_info":{
 				"package_name":"com.HilisCompany.PopTheBalloons.huawei",
-				"app_id":"107382635"
+				"app_id":"107513251"
 			},
 			"oauth_client":{
 				"client_type":1,
-				"client_id":"107382635"
+				"client_id":"107513251"
 			}
 		}
 	]
