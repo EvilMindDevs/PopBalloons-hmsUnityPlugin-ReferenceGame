@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "L2NDU19A16000894",
         "name": "com.HilisCompany.PopTheBalloons.huawei",
-        "processId": 6905,
+        "processId": 11567,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -84,6 +84,30 @@
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.PopTheBalloons.huawei",
             "processId": 6905,
+            "exited": false
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.HilisCompany.PopTheBalloons.huawei",
+            "processId": 8213,
+            "exited": false
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.HilisCompany.PopTheBalloons.huawei",
+            "processId": 9385,
+            "exited": false
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.HilisCompany.PopTheBalloons.huawei",
+            "processId": 10572,
+            "exited": false
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
+            "name": "com.HilisCompany.PopTheBalloons.huawei",
+            "processId": 11567,
             "exited": false
         }
     ],
