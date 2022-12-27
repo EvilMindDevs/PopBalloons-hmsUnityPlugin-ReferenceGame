@@ -45,8 +45,11 @@ namespace HmsPlugin
         {
             Debug.Log(TAG + "Constructor");
             adsKitSettings = HMSAdsKitSettings.Instance.Settings;
+
             if (!HMSDispatcher.InstanceExists)
                 HMSDispatcher.CreateDispatcher();
+
+
             HMSDispatcher.InvokeAsync(OnAwake);
             HMSDispatcher.InvokeAsync(OnStart);
         }

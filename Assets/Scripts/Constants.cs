@@ -8,7 +8,7 @@ public class Constants
 
 
     #region Score Constants
-    public const short blackBalloonScoreOnClick = -2;
+    //public const short blackBalloonScoreOnClick = -2;
 
     public const short blueBalloonScoreOnClick = 1;
 

@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverCanvas;
     [SerializeField] private GameObject gameCanvas;
+    [SerializeField] private GameObject storeCanvas;
    
    
     public TextMeshProUGUI blackBalloonCountValue;
@@ -30,6 +31,7 @@ public class UIController : MonoBehaviour
         //analyticsKitManager = HMSAnalyticsKitManager.Instance;
         gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
+        storeCanvas.SetActive(false);
         
     }
     public void OnStartButton()
@@ -48,34 +50,43 @@ public class UIController : MonoBehaviour
         clickToPop.enabled = false;
         gameOverCanvas.SetActive(true);
        
-        CountsToText();
+      
       
     }
 
-    private void CountsToText()
-    {
-        var clickToPop = GameObject.Find(Constants.gameControllerObject).GetComponent<ClickToPop>();
+    //private void CountsToText()
+    //{
+    //    var clickToPop = GameObject.Find(Constants.gameControllerObject).GetComponent<ClickToPop>();
 
-        blackBalloonCountValue.SetText(("Black Balloon Count: " + clickToPop.BlackBalloonCount));
-        blueBalloonCountValue.SetText(("Blue Balloon Count: " + clickToPop.BlueBalloonCount));
-        greenBalloonCountValue.SetText(("Green Balloon Count: " + clickToPop.GreenBalloonCount));
+    //    blackBalloonCountValue.SetText(("Black Balloon Count: " + clickToPop.BlackBalloonCount));
+    //    blueBalloonCountValue.SetText(("Blue Balloon Count: " + clickToPop.BlueBalloonCount));
+    //    greenBalloonCountValue.SetText(("Green Balloon Count: " + clickToPop.GreenBalloonCount));
 
-        //analyticsKitManager.SendEventWithBundle("BlackBalloonPop", "BlackBalloon" , (clickToPop.BlackBalloonCount).ToString());
+    //    //analyticsKitManager.SendEventWithBundle("BlackBalloonPop", "BlackBalloon" , (clickToPop.BlackBalloonCount).ToString());
         
         
-       
         
-    }
+    //}
    
     public void OnMainMenu()
     {
         gameCanvas.SetActive(true);
-        
+        gameOverCanvas.SetActive(false);
+        storeCanvas.SetActive(false);
+
     }
     public void ResetTheGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
        
+    }
+
+    public void OnStoreButton()
+    {
+        gameCanvas.SetActive(false);
+        gameOverCanvas.SetActive(false);
+        storeCanvas.SetActive(true);
+
     }
 
   

@@ -12,14 +12,16 @@ public class ClickToPop : MonoBehaviour, IPopper<GameObject>, IScore<GameObject>
     private int greenBalloonCount;
 
     public AudioSource popSound;
-    
+    public Camera myCamera;
 
     //encapsulation
     public short ThisScoreOnClick { get => thisScoreOnClick; }
     public int BlackBalloonCount { get => blackBalloonCount; }
     public int BlueBalloonCount { get => blueBalloonCount;  }
     public int GreenBalloonCount { get => greenBalloonCount;  }
-   
+
+
+
 
     void Update()
     {
@@ -30,12 +32,14 @@ public class ClickToPop : MonoBehaviour, IPopper<GameObject>, IScore<GameObject>
     {
         if (Input.GetMouseButtonDown(0))
         {
+            // Set up the raycast
+            Vector2 mousePosition = Input.mousePosition;
+            Ray ray = myCamera.ScreenPointToRay(mousePosition);
+            RaycastHit hit;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            // Check if the raycast hits an object
+            if (Physics.Raycast(ray, out hit))
             {
-
                 OnRaycastHitSomething(hit);
             }
         }
@@ -68,8 +72,10 @@ public class ClickToPop : MonoBehaviour, IPopper<GameObject>, IScore<GameObject>
 
         if (balloonColor == black)
         {
-            blackBalloonCount++;
-            return Constants.blackBalloonScoreOnClick;
+            UIController uiController = FindObjectOfType<UIController>();
+            uiController.EndTheGame();
+
+            return 0;
         }
         else if (balloonColor == blue)
         {

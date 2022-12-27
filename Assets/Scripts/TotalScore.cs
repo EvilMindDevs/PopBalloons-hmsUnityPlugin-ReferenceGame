@@ -10,10 +10,14 @@ public class TotalScore : MonoBehaviour
     private TextMeshProUGUI scoreValueText;
 
     [Header("Game Constants")]
-    private const int WIN_SCORE = 50;
+    //private const int WIN_SCORE = 200;
     private const int LOSE_SCORE = 0;
 
     private int finalScoreOfAll;
+
+    public GameObject rewardAdsPanel;
+
+    private bool didRewardedEarned = false;
 
     private void Start()
     {
@@ -32,11 +36,23 @@ public class TotalScore : MonoBehaviour
             UIController uiController = FindObjectOfType<UIController>();
             uiController.EndTheGame();
         }
-        else if (finalScoreOfAll >= WIN_SCORE)
-        {
-            winText.SetActive(true);
-            UIController uiController = FindObjectOfType<UIController>();
-            uiController.EndTheGame();
-        }
+        //else
+        //{
+        //    winText.SetActive(true);
+        //    UIController uiController = FindObjectOfType<UIController>();
+        //    uiController.EndTheGame();
+        //}
+    }
+
+    public void OnRewardedAdButtonClick()
+    {
+        //HMSAdsKitManager.Instance.ShowRewardedAd();
+        DoubleScore(finalScoreOfAll);
+    }
+
+    public void DoubleScore(int finalScore)
+    {
+        finalScore *= 2;
+        scoreValueText.SetText(finalScore.ToString());
     }
 }

@@ -22,6 +22,7 @@ public class BalloonInfliater : MonoBehaviour
     private float startDrag;  
     private float timeInflating;
 
+    GameManager gameManager = new GameManager();
     private float speed;
 
 
@@ -33,6 +34,12 @@ public class BalloonInfliater : MonoBehaviour
 
         baseScale = transform.localScale;
         targetScale = baseScale * maxSize;
+
+        if(gameManager.boosterPurchased == true)
+        {
+            maxSize = 4;
+        }
+
         sizeToRise = baseScale * (riseSize * maxSize);
         startDrag = rb.drag;
 
