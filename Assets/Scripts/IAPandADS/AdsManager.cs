@@ -1,94 +1,94 @@
+using HmsPlugin;
+using HuaweiMobileServices.Ads;
+using HuaweiMobileServices.IAP;
+using HuaweiMobileServices.Id;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using HmsPlugin;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using HuaweiMobileServices.Ads;
 
-public class GameManager : MonoBehaviour
+public class AdsManager : MonoBehaviour
 {
-    private AdsDisabler adsDisabler;
+    public bool IsSubscriptionActive { get; private set; }
 
-   
-
-    private float adInterval = 5.0f;
-    private float adDuration = 2.0f;
-
-    public GameObject rewardAdsPanel;
+    public GameObject rewardedAdPanel;
 
     private bool didRewardedEarned = false;
-    public bool boosterPurchased = false;
-
-  
 
     void Start()
     {
-
-        adsDisabler = GameObject.Find("GameController").GetComponent<AdsDisabler>();
-        if(adsDisabler.IsSubscriptionActive == false)
+        if (PlayerPrefs.GetString("isSubscriptionActive") == "false")
         {
-            HMSAdsKitManager.Instance.OnRewardAdCompleted = OnRewardAdCompleted;
+          
             HMSAdsKitManager.Instance.OnRewardedAdLoaded = OnRewardedAdLoaded;
+            HMSAdsKitManager.Instance.OnRewardAdCompleted = OnRewardAdCompleted;
 
-            Debug.Log("[HMS] ShowSplashVideo!");
-            HMSAdsKitManager.Instance.LoadSplashAd("testd7c5cewoj6", SplashAd.SplashAdOrientation.PORTRAIT);
 
-            //Debug.Log("[HMS] ShowSplashVideo!");
-            //HMSAdsKitManager.Instance.LoadSplashAd("testd7c5cewoj6", SplashAd.SplashAdOrientation.PORTRAIT);
+            HMSAdsKitManager.Instance.ConsentOnFail = OnConsentFail;
+            HMSAdsKitManager.Instance.ConsentOnSuccess = OnConsentSuccess;
+            HMSAdsKitManager.Instance.RequestConsentUpdate();
 
+           
         }
-
-
-
     }
 
-    void Update()
+    private void OnConsentSuccess(ConsentStatus arg1, bool arg2, IList<AdProvider> arg3)
     {
-        if (adsDisabler.IsSubscriptionActive == false)
-        {
-            if (Time.timeSinceLevelLoad > adInterval)
-            {
-                // Show the banner ad
-                //HMSAdsKitManager.Instance.ShowBannerAd();
-                Debug.Log("!!!!!banner adloaded!!!!");
+        Debug.Log("Consent Success");
+    }
 
-                // Reset the ad interval
-                adInterval = Time.timeSinceLevelLoad + adDuration;
-            }
-            else
-                HMSAdsKitManager.Instance.HideBannerAd();
-        }
+    private void OnConsentFail(string error)
+    {
+        Debug.LogError("Consent Failed:" + error);
+    }
+
+    public void DisableAds()
+    {
+        Debug.Log("subs active");
+        IsSubscriptionActive = true;
+        PlayerPrefs.SetString("isSubscriptionActive", "true");
+        HMSAdsKitManager.Instance.HideBannerAd();
+    }
+
+    public void ShowAds()
+    {
        
 
-    }
+        HMSAdsKitManager.Instance.ShowBannerAd();
+        if (HMSAdsKitManager.Instance.IsInterstitialAdLoaded)
+        {
+            HMSAdsKitManager.Instance.ShowInterstitialAd();
+        }
 
+        if (HMSAdsKitManager.Instance.IsRewardedAdLoaded)
+        {
+            rewardedAdPanel.SetActive(true);
+        }
+        else
+        {
+            HMSAdsKitManager.Instance.LoadRewardedAd();
+        }
+
+    }
+    public void OnRewardedAdButton()
+    {
+        HMSAdsKitManager.Instance.ShowRewardedAd();
+    }
     private void OnRewardedAdLoaded()
     {
-        if (!didRewardedEarned) 
-            rewardAdsPanel.gameObject.SetActive(true);
-
-
+        if (!didRewardedEarned) // With this, you can prevent your users from watching your rewarded ads repeatedly. Will be reload rewarded ads after watching it.
+            rewardedAdPanel.SetActive(true);
     }
 
     private void OnRewardAdCompleted()
     {
-        rewardAdsPanel.gameObject.SetActive(false);
+        Debug.Log("ON REWARD COMPLETED!");
+        rewardedAdPanel.SetActive(false);
+        TotalScore totalScore = FindObjectOfType<TotalScore>();
+        totalScore.DoubleScore();
+
         didRewardedEarned = true;
-    }
-
-    public void EndGameAds()
-    {
-        if (adsDisabler.IsSubscriptionActive == false)
-        {
-            if (HMSAdsKitManager.Instance.IsInterstitialAdLoaded)
-            {
-                HMSAdsKitManager.Instance.ShowInterstitialAd();
-            }
-
-        }
-    }
-    public void OnBoosterPurchased()
-    {
-        boosterPurchased = true;
     }
 
 }

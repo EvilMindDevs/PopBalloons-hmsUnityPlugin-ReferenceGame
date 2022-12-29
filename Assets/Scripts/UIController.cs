@@ -1,13 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-//using HuaweiMobileServices.Analystics;
-//using HuaweiMobileServices.Utils;
-using UnityEngine.UI;
-using System.Net.Mail;
-//using HuaweiMobileServices.Game;
-//using HmsPlugin;
-//using HuaweiMobileServices.InAppComment;
+
 
 public class UIController : MonoBehaviour
 {
@@ -21,7 +15,10 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI greenBalloonCountValue;
 
     //HMSAnalyticsKitManager analyticsKitManager;
-   
+
+    StoreManager storeManager;
+
+    
 
 
     private void Start()
@@ -49,9 +46,14 @@ public class UIController : MonoBehaviour
         var clickToPop = GameObject.Find(Constants.gameControllerObject).GetComponent<ClickToPop>();
         clickToPop.enabled = false;
         gameOverCanvas.SetActive(true);
-       
-      
-      
+
+        AdsManager adsManager = GameObject.FindObjectOfType<AdsManager>();
+        if (adsManager != null)
+        {
+            adsManager.ShowAds();
+        }
+
+
     }
 
     //private void CountsToText()
@@ -86,6 +88,13 @@ public class UIController : MonoBehaviour
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
         storeCanvas.SetActive(true);
+
+        //if (storeManager.isIAPavailable == true)
+        //{
+          
+        //}
+        //else Debug.Log("iap not ready yet");
+       
 
     }
 

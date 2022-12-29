@@ -1,88 +1,95 @@
-//using HuaweiMobileServices.Id;
-//using HuaweiMobileServices.Utils;
-//using HuaweiMobileServices.Game;
-//using UnityEngine;
-//using UnityEngine.UI;
-//using HmsPlugin;
-//using System;
-//using TMPro;
+using HuaweiMobileServices.Id;
+using HuaweiMobileServices.Utils;
+using HuaweiMobileServices.Game;
+using UnityEngine;
+using UnityEngine.UI;
+using HmsPlugin;
+using System;
+using TMPro;
 
-//public class AccountDemo : MonoBehaviour
-//{
-//    private readonly string TAG = "[HMS] AccountKitDemo ";
 
-//    [SerializeField]
-//    private TextMeshProUGUI textStatus;
+public class AccountDemo : MonoBehaviour
+{
+    private readonly string TAG = "[HMS] AccountKitDemo ";
 
-//    private const string NOT_LOGGED_IN = "No user logged in";
-//    private const string LOGGED_IN = "{0} is logged in";
-//    private const string LOGIN_ERROR = "Error or cancelled login";
+    [SerializeField]
+    private TextMeshProUGUI textStatus;
 
-//    public static Action<string> AccountKitLog;
+    private const string NOT_LOGGED_IN = "No user logged in";
+    private const string LOGGED_IN = "{0} is logged in";
+    private const string LOGIN_ERROR = "Error or cancelled login";
 
-//    #region Singleton
+    public static Action<string> AccountKitLog;
 
-//    public static AccountDemo Instance { get; private set; }
-//    private void Singleton()
-//    {
-//        if (Instance != null && Instance != this)
-//        {
-//            Destroy(this);
-//        }
-//        else
-//        {
-//            Instance = this;
-//        }
-//    }
+    #region Singleton
 
-//    #endregion
-//    private void Awake()
-//    {
-//        Singleton();
-//    }
+    public static AccountDemo Instance { get; private set; }
+    private void Singleton()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
-//    void Start()
-//    {
-//        HMSAccountKitManager.Instance.OnSignInSuccess = OnLoginSuccess;
-//        HMSAccountKitManager.Instance.OnSignInFailed = OnLoginFailure;
-      
+    #endregion
+    private void Awake()
+    {
+        Singleton();
+    }
 
-//        AccountKitLog?.Invoke(NOT_LOGGED_IN);
+    void Start()
+    {
+        HMSAccountKitManager.Instance.OnSignInSuccess = OnLoginSuccess;
+        HMSAccountKitManager.Instance.OnSignInFailed = OnLoginFailure;
 
+
+        AccountKitLog?.Invoke(NOT_LOGGED_IN);
+
+
+    }
+
+    public void OnAccountLogin()
+    {
+        Debug.Log(TAG + "LogIn");
+
+        HMSAccountKitManager.Instance.SignIn();
+    }
+    public void SilentSignIn()
+    {
+        Debug.Log(TAG + "SilentSignIn");
+
+        HMSAccountKitManager.Instance.SilentSignIn();
+    }
+
+    public void LogOut()
+    {
+        Debug.Log(TAG + "LogOut");
+
+        HMSAccountKitManager.Instance.SignOut();
+
+        AccountKitLog?.Invoke(NOT_LOGGED_IN);
+    }
+
+    public void OnLoginSuccess(AuthAccount authHuaweiId)
+    {
+        textStatus.SetText("Welcome " + authHuaweiId.DisplayName);
+        AccountKitLog?.Invoke(string.Format(LOGGED_IN, authHuaweiId.DisplayName));
+
+        //Init IAP after OnSignInSuccess
+        StoreManager storeManager = gameObject.AddComponent<StoreManager>();
+        storeManager.InitIAP();
         
-//    }
 
-//    public void OnAccountLogin()
-//    {
-//        Debug.Log(TAG + "LogIn");
+        HMSGameServiceManager.Instance.Init();
+    }
 
-//        HMSAccountKitManager.Instance.SignIn();
-//    }
-//    public void SilentSignIn()
-//    {
-//        Debug.Log(TAG + "SilentSignIn");
-
-//        HMSAccountKitManager.Instance.SilentSignIn();
-//    }
-
-//    public void LogOut()
-//    {
-//        Debug.Log(TAG + "LogOut");
-
-//        HMSAccountKitManager.Instance.SignOut();
-
-//        AccountKitLog?.Invoke(NOT_LOGGED_IN);
-//    }
-
-//    public void OnLoginSuccess(AuthAccount authHuaweiId)
-//    {
-//        textStatus.SetText("Welcome " + authHuaweiId.DisplayName);
-//        AccountKitLog?.Invoke(string.Format(LOGGED_IN, authHuaweiId.DisplayName));
-//        HMSGameServiceManager.Instance.Init();
-//    }
-
-//    public void OnLoginFailure(HMSException error)
-//    {
-//        AccountKitLog?.Invoke(LOGIN_ERROR);
-//    }
-//}
+    public void OnLoginFailure(HMSException error)
+    {
+        AccountKitLog?.Invoke(LOGIN_ERROR);
+    }
+}

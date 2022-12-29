@@ -15,7 +15,7 @@ public class TotalScore : MonoBehaviour
 
     private int finalScoreOfAll;
 
-    public GameObject rewardAdsPanel;
+  
 
     private bool didRewardedEarned = false;
 
@@ -44,15 +44,12 @@ public class TotalScore : MonoBehaviour
         //}
     }
 
-    public void OnRewardedAdButtonClick()
-    {
-        //HMSAdsKitManager.Instance.ShowRewardedAd();
-        DoubleScore(finalScoreOfAll);
-    }
 
-    public void DoubleScore(int finalScore)
+
+    public void DoubleScore()
     {
-        finalScore *= 2;
-        scoreValueText.SetText(finalScore.ToString());
+        finalScoreOfAll *= 2;
+        scoreValueText.SetText(finalScoreOfAll.ToString());
+        Debug.Log("final score has doubled" + finalScoreOfAll);
     }
 }
