@@ -41,6 +41,7 @@ namespace HmsPlugin
 
         InstallReferrerClient installReferrerClient;
 
+        
         public HMSAdsKitManager()
         {
             Debug.Log(TAG + "Constructor");
@@ -530,7 +531,9 @@ namespace HmsPlugin
             public void OnRewardAdCompleted()
             {
                 Debug.Log("[HMS] HMSAdsKitManager OnRewardAdCompleted!");
+                
                 mAdsManager.OnRewardAdCompleted?.Invoke();
+
             }
 
             public void OnRewardAdFailedToLoad(int errorCode)

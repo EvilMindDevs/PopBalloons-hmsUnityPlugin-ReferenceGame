@@ -64,66 +64,66 @@ public class AdsDemoManager : MonoBehaviour
 
     private void OnConsentSuccess(ConsentStatus consentStatus, bool isNeedConsent, IList<AdProvider> adProviders)
     {
-        Debug.Log($"[HMS] AdsDemoManager OnConsentSuccess consentStatus:{consentStatus} isNeedConsent:{isNeedConsent}");
+        Debug.Log($"11111[HMS] AdsDemoManager OnConsentSuccess consentStatus:{consentStatus} isNeedConsent:{isNeedConsent}");
         foreach (var AdProvider in adProviders)
         {
-            Debug.Log($"[HMS] AdsDemoManager OnConsentSuccess adproviders: Id:{AdProvider.Id} Name:{AdProvider.Name} PrivacyPolicyUrl:{AdProvider.PrivacyPolicyUrl} ServiceArea:{AdProvider.ServiceArea}");
+            Debug.Log($"11111[HMS] AdsDemoManager OnConsentSuccess adproviders: Id:{AdProvider.Id} Name:{AdProvider.Name} PrivacyPolicyUrl:{AdProvider.PrivacyPolicyUrl} ServiceArea:{AdProvider.ServiceArea}");
         }
     }
 
     private void OnConsentFail(string desc)
     {
-        Debug.Log($"[HMS] AdsDemoManager OnConsentFail:{desc}");
+        Debug.Log($"11111[HMS] AdsDemoManager OnConsentFail:{desc}");
     }
 
     public void ShowBannerAd()
     {
-        Debug.Log("[HMS] AdsDemoManager ShowBannerAd");
+        Debug.Log("11111[HMS] AdsDemoManager ShowBannerAd");
 
         HMSAdsKitManager.Instance.ShowBannerAd();
     }
 
     public void HideBannerAd()
     {
-        Debug.Log("[HMS] AdsDemoManager HideBannerAd");
+        Debug.Log("11111[HMS] AdsDemoManager HideBannerAd");
 
         HMSAdsKitManager.Instance.HideBannerAd();
     }
 
     public void ShowRewardedAd()
     {
-        Debug.Log("[HMS] AdsDemoManager ShowRewardedAd");
+        Debug.Log("11111[HMS] AdsDemoManager ShowRewardedAd");
         HMSAdsKitManager.Instance.ShowRewardedAd();
     }
 
     public void ShowInterstitialAd()
     {
-        Debug.Log("[HMS] AdsDemoManager ShowInterstitialAd");
+        Debug.Log("11111[HMS] AdsDemoManager ShowInterstitialAd");
         HMSAdsKitManager.Instance.ShowInterstitialAd();
     }
 
     public void ShowSplashImage()
     {
-        Debug.Log("[HMS] ShowSplashImage!");
+        Debug.Log("11111[HMS] ShowSplashImage!");
 
         HMSAdsKitManager.Instance.LoadSplashAd("testq6zq98hecj", SplashAd.SplashAdOrientation.PORTRAIT);
     }
 
     public void ShowSplashVideo()
     {
-        Debug.Log("[HMS] ShowSplashVideo!");
+        Debug.Log("11111[HMS] ShowSplashVideo!");
 
         HMSAdsKitManager.Instance.LoadSplashAd("testd7c5cewoj6", SplashAd.SplashAdOrientation.PORTRAIT);
     }
 
     public void OnRewarded(Reward reward)
     {
-        Debug.Log("[HMS] AdsDemoManager rewarded!");
+        Debug.Log("11111[HMS] AdsDemoManager rewarded!");
     }
 
     public void OnInterstitialAdClosed()
     {
-        Debug.Log("[HMS] AdsDemoManager interstitial ad closed");
+        Debug.Log("11111[HMS] AdsDemoManager interstitial ad closed");
     }
 
     public void SetTestAdStatus()

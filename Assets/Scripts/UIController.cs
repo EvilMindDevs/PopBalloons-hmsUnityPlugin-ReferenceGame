@@ -89,6 +89,12 @@ public class UIController : MonoBehaviour
         gameOverCanvas.SetActive(false);
         storeCanvas.SetActive(true);
 
+        StoreManager storeManager = GameObject.FindObjectOfType<StoreManager>();
+        if (storeManager == null)
+            Debug.Log("store manager is null!!!!!!!!!!");
+
+        storeManager.FillProducts();
+
         //if (storeManager.isIAPavailable == true)
         //{
           

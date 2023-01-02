@@ -18,9 +18,10 @@ public class AdsManager : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetString("isSubscriptionActive") == "false")
+        Debug.Log("BBBBBBBBBBUUUUUUUUURRRRRRRRRRRRRAAAAAAAAAAAAAAAAADDDDDDDDDDAAAAAAAAAAA");
+        if (PlayerPrefs.GetInt("isSubscriptionActive") == 0)
         {
-          
+            Debug.Log("simdi burada issubsactive playerprefi 0 mis yani!!!!!!!!!!!");
             HMSAdsKitManager.Instance.OnRewardedAdLoaded = OnRewardedAdLoaded;
             HMSAdsKitManager.Instance.OnRewardAdCompleted = OnRewardAdCompleted;
 
@@ -31,6 +32,18 @@ public class AdsManager : MonoBehaviour
 
            
         }
+        var builder = HwAds.RequestOptions.ToBuilder();
+
+        //builder
+        //    .SetConsent("tcfString")
+        //    .SetNonPersonalizedAd((int)NonPersonalizedAd.ALLOW_ALL)
+        //    .Build();
+
+        //bool requestLocation = true;
+        //var requestOptions = builder.SetConsent("testConsent").SetRequestLocation(requestLocation).Build();
+
+        //Debug.Log($"RequestOptions NonPersonalizedAds:  {requestOptions.NonPersonalizedAd}");
+        //Debug.Log($"Consent: {requestOptions.Consent}");
     }
 
     private void OnConsentSuccess(ConsentStatus arg1, bool arg2, IList<AdProvider> arg3)
@@ -46,29 +59,31 @@ public class AdsManager : MonoBehaviour
     public void DisableAds()
     {
         Debug.Log("subs active");
-        IsSubscriptionActive = true;
-        PlayerPrefs.SetString("isSubscriptionActive", "true");
+        PlayerPrefs.SetInt("isSubscriptionActive", 1);
         HMSAdsKitManager.Instance.HideBannerAd();
     }
 
     public void ShowAds()
     {
-       
-
-        HMSAdsKitManager.Instance.ShowBannerAd();
-        if (HMSAdsKitManager.Instance.IsInterstitialAdLoaded)
+        if (PlayerPrefs.GetInt("isSubscriptionActive") == 0)
         {
-            HMSAdsKitManager.Instance.ShowInterstitialAd();
-        }
+            Debug.Log("simdi burada showads icinde issubsactive playerprefi 0 mis yani!!!!!!!!!!!");
+            HMSAdsKitManager.Instance.ShowBannerAd();
+            if (HMSAdsKitManager.Instance.IsInterstitialAdLoaded)
+            {
+                HMSAdsKitManager.Instance.ShowInterstitialAd();
+            }
 
-        if (HMSAdsKitManager.Instance.IsRewardedAdLoaded)
-        {
             rewardedAdPanel.SetActive(true);
+
+            //Debug.Log("HMSAdsKitManager.Instance.IsRewardedAdLoaded ============ " + HMSAdsKitManager.Instance.IsRewardedAdLoaded);
+
+            //while (!HMSAdsKitManager.Instance.IsRewardedAdLoaded)
+            //{
+            //    HMSAdsKitManager.Instance.LoadRewardedAd();
+            //}
         }
-        else
-        {
-            HMSAdsKitManager.Instance.LoadRewardedAd();
-        }
+
 
     }
     public void OnRewardedAdButton()
@@ -89,6 +104,16 @@ public class AdsManager : MonoBehaviour
         totalScore.DoubleScore();
 
         didRewardedEarned = true;
+    }
+
+    public void OnApplicationFocus(bool focus)
+    {
+        if(focus && didRewardedEarned)
+        {
+            Debug.Log("app has gained focus");
+            //OnRewardAdCompleted?.invoke 
+
+        }
     }
 
 }
