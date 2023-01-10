@@ -14,6 +14,8 @@ public class UIController : MonoBehaviour
     public TextMeshProUGUI blueBalloonCountValue;
     public TextMeshProUGUI greenBalloonCountValue;
 
+    public GameObject nativeAdButton;
+
     //HMSAnalyticsKitManager analyticsKitManager;
 
     StoreManager storeManager;
@@ -24,6 +26,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         Debug.Log("ShowInAppComment");
+       
         //InAppComment.ShowInAppComment();
         //analyticsKitManager = HMSAnalyticsKitManager.Instance;
         gameCanvas.SetActive(true);
@@ -36,12 +39,13 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1;
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
+        nativeAdButton.SetActive(false);
     }
 
    
     public void EndTheGame()
     {
-        
+        nativeAdButton.SetActive(true);
         Time.timeScale = 0;
         var clickToPop = GameObject.Find(Constants.gameControllerObject).GetComponent<ClickToPop>();
         clickToPop.enabled = false;
@@ -85,25 +89,26 @@ public class UIController : MonoBehaviour
 
     public void OnStoreButton()
     {
+        storeCanvas.SetActive(true);
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
-        storeCanvas.SetActive(true);
 
-        StoreManager storeManager = GameObject.FindObjectOfType<StoreManager>();
-        if (storeManager == null)
-            Debug.Log("store manager is null!!!!!!!!!!");
-
-        storeManager.FillProducts();
-
-        //if (storeManager.isIAPavailable == true)
-        //{
-          
-        //}
-        //else Debug.Log("iap not ready yet");
-       
+        AfterStoreButton();
 
     }
 
+    private void AfterStoreButton()
+    {
+        Debug.Log("Trying to find store manager object");
+        StoreManager storeManager = GameObject.FindObjectOfType<StoreManager>();
+
+        if (storeManager == null)
+            Debug.Log("store manager is null!!!!!!!!!!");
+        else
+        {
+            storeManager.FillProducts();
+        }
+    }
   
     
 

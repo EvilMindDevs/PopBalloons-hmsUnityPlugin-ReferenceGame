@@ -13,7 +13,9 @@ public class StoreManager : MonoBehaviour
 {
     public static Action<string> IAPLog;
 
-    public GameObject product1, product2, product3;
+   
+
+    private List<InAppPurchaseData> productPurchasedList;
 
     private IList<ProductInfoResult> productInfos = new List<ProductInfoResult>();
 
@@ -23,7 +25,7 @@ public class StoreManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("!!!!!!!!!!!!!!!!!!!STORE MANAGER ÝÇÝNDE!!!!!!!!!!!!!!!!!!!!");
+        //Debug.Log("!!!!!!!!!!!!!!!!!!!STORE MANAGER ÝÇÝNDE!!!!!!!!!!!!!!!!!!!!");
         isIAPavailable = false;
     }
 
@@ -36,6 +38,7 @@ public class StoreManager : MonoBehaviour
 
         HMSIAPManager.Instance.OnBuyProductFailure = OnBuyProductFailure;
         HMSIAPManager.Instance.BuyProduct(productId);
+
     }
     private void OnBuyProductFailure(int obj)
     {
@@ -56,18 +59,22 @@ public class StoreManager : MonoBehaviour
         {
             AdsManager adsManager = gameObject.AddComponent<AdsManager>();
             adsManager.DisableAds();
+            Debug.Log("NOADS HAS PURCHASED");
             
             
         }
         else if (obj.InAppPurchaseData.ProductId == HMSIAPConstants.Booster)
         {
             Debug.Log("this is your booster");
+            Debug.Log("BOOSTER HAS PURCHASED");
         }
         else if (obj.InAppPurchaseData.ProductId == HMSIAPConstants.PinkColor)
         {
             BalloonColor balloonColor = new BalloonColor();
             balloonColor.UnlockColor();
+            Debug.Log("PINK COLOR HAS PURCHASED");
         }
+       
     }
 
     //SOR!!
@@ -110,6 +117,10 @@ public class StoreManager : MonoBehaviour
 
     public void FillProducts()
     {
+        GameObject product1 = GameObject.Find("Product1");
+        GameObject product2 = GameObject.Find("Product2");
+        GameObject product3 = GameObject.Find("Product3");
+
         if (productInfos == null)
         {
             Debug.Log("PRODUCT INFOS NULL MALESEF");
@@ -134,12 +145,23 @@ public class StoreManager : MonoBehaviour
 
     private void FillProduct(GameObject product, ProductInfo productInfo)
     {
+        if (product == null)
+            Debug.Log("product is null");
+
         Debug.Log("FillProduct" + product.name + " - productInfo" + productInfo.ProductName);
         product.SetActive(true);
-        product.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = productInfo.ProductName;
-        product.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = productInfo.ProductDesc;
-        product.transform.GetChild(3).gameObject.GetComponent<TextMeshPro>().text = productInfo.Price + productInfo.Currency;
-        product.transform.GetChild(4).gameObject.GetComponent<Button>().onClick.AddListener(delegate { BuyProduct(productInfo.ProductId); });
+        if (product.transform.childCount > 0)
+        {
+            Debug.Log("[HMS CHILD COUNT CHILD COUNT CHILD COUNT" + product.transform.childCount.ToString());
+            product.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.ProductName;
+            product.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.ProductDesc;
+            product.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.Price + productInfo.Currency;
+            //product.transform.GetChild(4).gameObject.GetComponent<Button>().onClick.AddListener(delegate { BuyProduct(productInfo.ProductId); });
+        }
+        else
+            Debug.Log("product doesnt have any child");
+    
+
     }
     private void OnCheckIapAvailabilityFailure(HMSException obj)
     {
@@ -152,5 +174,13 @@ public class StoreManager : MonoBehaviour
         isIAPavailable = true;
         IAPLog?.Invoke("IAP is ready.");
     }
+    //private void RestorePurchases()
+    //{
+    //    HMSIAPManager.Instance.RestorePurchases((restoredProducts) =>
+    //    {
+    //        productPurchasedList = new List<InAppPurchaseData>(restoredProducts.InAppPurchaseDataList);
+    //        Debug.Log("THÝS IS PRODUCT PURCHASE LIST" + productPurchasedList);
+    //    });
+    //}
 
 }

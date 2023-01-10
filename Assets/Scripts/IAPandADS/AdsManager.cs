@@ -13,6 +13,7 @@ public class AdsManager : MonoBehaviour
     public bool IsSubscriptionActive { get; private set; }
 
     public GameObject rewardedAdPanel;
+    public GameObject nativeAdPanel;
 
     private bool didRewardedEarned = false;
 
@@ -83,6 +84,13 @@ public class AdsManager : MonoBehaviour
             //    HMSAdsKitManager.Instance.LoadRewardedAd();
             //}
         }
+        
+        if(PlayerPrefs.GetInt("isSubscriptionActive") == 1)
+        {
+            rewardedAdPanel.SetActive(false);
+            nativeAdPanel.SetActive(false);
+
+        }
 
 
     }
@@ -114,6 +122,10 @@ public class AdsManager : MonoBehaviour
             //OnRewardAdCompleted?.invoke 
 
         }
+    }
+    public void NativeAdManager()
+    {
+
     }
 
 }
