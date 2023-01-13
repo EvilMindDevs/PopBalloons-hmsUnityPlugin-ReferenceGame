@@ -15,10 +15,6 @@ public class TotalScore : MonoBehaviour
 
     private int finalScoreOfAll;
 
-  
-
-    private bool didRewardedEarned = false;
-
     private void Start()
     {
         scoreValueText = GameObject.Find("ScoreValue").GetComponent<TextMeshProUGUI>();

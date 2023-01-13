@@ -314,14 +314,18 @@ namespace HmsPlugin
                                     break;
 
                                 case OrderStatusCode.ORDER_PRODUCT_OWNED:
-                                    Debug.LogError("[HMSIAPManager] Product owned");
+                                    Debug.LogError("[HMSIAPManager] Product owned"); //1
                                     break;
 
                                 default:
                                     Debug.LogError("[HMSIAPManager] BuyProduct failed. ReturnCode: " + purchaseResultInfo.ReturnCode + ", ErrorMsg: " + purchaseResultInfo.ErrMsg);
                                     break;
                             }
+
+                            var isProductFailure = (OnBuyProductFailure == null ? "TRUE" : "FALSE");
+                            Debug.Log("[HMS] ON BUY PRODUCT FAILURE INVOKE USTUNDE " + isProductFailure);
                             OnBuyProductFailure?.Invoke(purchaseResultInfo.ReturnCode);
+                            Debug.Log("[HMS] ON BUY PRODUCT FAILURE INVOKE ALTINDA " );
                         }
 
                     }, (exception) =>
@@ -345,7 +349,7 @@ namespace HmsPlugin
                 return;
             }
 
-            Debug.Log("[HMSIAPManager] ObtainOwnedPurchaseRequest");
+            Debug.Log("[HMSIAPManager] ObtainOwnedPurchaseRequest"); //2
             ObtainOwnedPurchases(new OwnedPurchasesReq() { PriceType = priceType });
         }
 
@@ -358,7 +362,7 @@ namespace HmsPlugin
             }
 
 
-            Debug.Log("[HMSIAPManager] ObtainAllOwnedPurchaseRequest");
+            Debug.Log("[HMSIAPManager] ObtainAllOwnedPurchaseRequest"); 
             ObtainOwnedPurchases(new OwnedPurchasesReq() { PriceType = PriceType.IN_APP_CONSUMABLE });
             ObtainOwnedPurchases(new OwnedPurchasesReq() { PriceType = PriceType.IN_APP_NONCONSUMABLE });
             ObtainOwnedPurchases(new OwnedPurchasesReq() { PriceType = PriceType.IN_APP_SUBSCRIPTION });
@@ -369,7 +373,7 @@ namespace HmsPlugin
             ITask<OwnedPurchasesResult> task = iapClient.ObtainOwnedPurchases(ownedPurchasesReq);
             task.AddOnSuccessListener((result) =>
             {
-                Debug.Log("[HMSIAPManager] ObtainOwnedPurchases");
+                Debug.Log("[HMSIAPManager] ObtainOwnedPurchases"); //3
                 foreach (var item in result.InAppPurchaseDataList)
                 {
                     Debug.Log("[HMSIAPManager] ProductId: " + item.ProductId + ", ProductName: " + item.ProductName + ", Price: " + item.Price);

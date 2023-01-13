@@ -11,7 +11,7 @@ public class BalloonInfliater : MonoBehaviour
     [Range(0, 1)] public float riseSize = .5f;
     public float timeToReachMaxSize = 1;
     public float maxDrag = 100;
-    public float maxSpeed;
+    private float maxSpeed;
 
     private float randomSpeed;
 
@@ -28,7 +28,9 @@ public class BalloonInfliater : MonoBehaviour
 
     void Start()
     {
+        maxSpeed = PlayerPrefs.GetInt("RealMaxSpeed", 6);
         randomSpeed = UnityEngine.Random.Range(2, maxSpeed);
+        
 
         rb = GetComponent<Rigidbody>();
 
@@ -40,7 +42,12 @@ public class BalloonInfliater : MonoBehaviour
         startDrag = rb.drag;
 
     }
-
+    public void SpeedBooster()
+    {
+        PlayerPrefs.SetInt("RealMaxSpeed", 10);
+        int myIntValue = PlayerPrefs.GetInt("RealMaxSpeed");
+        Debug.Log("this is the int value of real max speed " + myIntValue);
+    }
 
     private void Update()
     {

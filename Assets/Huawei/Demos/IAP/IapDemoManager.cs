@@ -60,10 +60,12 @@ public class IapDemoManager : MonoBehaviour
         //HMSIAPManager.Instance.CheckIapAvailability();
     }
 
-    private void DeliveryControl()
+     private void DeliveryControl(OwnedPurchasesResult result)
     {
         // https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/redelivering-consumables-0000001051356573
         // Check whether the purchase token is in the purchase token list of the delivered products.
+
+        
     }
 
     // For sandbox testing

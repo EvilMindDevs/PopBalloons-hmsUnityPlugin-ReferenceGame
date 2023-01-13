@@ -10,28 +10,27 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject storeCanvas;
    
    
-    public TextMeshProUGUI blackBalloonCountValue;
-    public TextMeshProUGUI blueBalloonCountValue;
-    public TextMeshProUGUI greenBalloonCountValue;
+    //public TextMeshProUGUI blackBalloonCountValue;
+    //public TextMeshProUGUI blueBalloonCountValue;
+    //public TextMeshProUGUI greenBalloonCountValue;
+    
 
     public GameObject nativeAdButton;
-
-    //HMSAnalyticsKitManager analyticsKitManager;
-
-    StoreManager storeManager;
-
+    
     
 
 
     private void Start()
     {
         Debug.Log("ShowInAppComment");
-       
+
+        
         //InAppComment.ShowInAppComment();
         //analyticsKitManager = HMSAnalyticsKitManager.Instance;
         gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         storeCanvas.SetActive(false);
+
         
     }
     public void OnStartButton()
@@ -57,23 +56,18 @@ public class UIController : MonoBehaviour
             adsManager.ShowAds();
         }
 
+        PlayerPrefs.SetInt("RealMaxSpeed", 6);
+
+        int currentBoosterCount = PlayerPrefs.GetInt("booster_count", 0);
+        currentBoosterCount--;
+        PlayerPrefs.SetInt("booster_count", currentBoosterCount);
+        PlayerPrefs.Save();
+
+
 
     }
 
-    //private void CountsToText()
-    //{
-    //    var clickToPop = GameObject.Find(Constants.gameControllerObject).GetComponent<ClickToPop>();
 
-    //    blackBalloonCountValue.SetText(("Black Balloon Count: " + clickToPop.BlackBalloonCount));
-    //    blueBalloonCountValue.SetText(("Blue Balloon Count: " + clickToPop.BlueBalloonCount));
-    //    greenBalloonCountValue.SetText(("Green Balloon Count: " + clickToPop.GreenBalloonCount));
-
-    //    //analyticsKitManager.SendEventWithBundle("BlackBalloonPop", "BlackBalloon" , (clickToPop.BlackBalloonCount).ToString());
-        
-        
-        
-    //}
-   
     public void OnMainMenu()
     {
         gameCanvas.SetActive(true);
@@ -93,6 +87,7 @@ public class UIController : MonoBehaviour
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
 
+        DisplayBoosterCount();
         AfterStoreButton();
 
     }
@@ -109,7 +104,19 @@ public class UIController : MonoBehaviour
             storeManager.FillProducts();
         }
     }
-  
-    
 
+    public void OnResetBelongings()
+    {
+        PlayerPrefs.SetInt("booster_count", 0);
+        PlayerPrefs.Save();
+        DisplayBoosterCount();
+    }
+
+    public void DisplayBoosterCount()
+    {
+        GameObject boosterCountValue = GameObject.Find("boosterCount");
+
+        int currentBoosterCount = PlayerPrefs.GetInt("booster_count", 0);
+        boosterCountValue.GetComponent<TextMeshProUGUI>().SetText("You Have: " + currentBoosterCount.ToString());
+    }
 }

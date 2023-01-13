@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "L2NDU19A16000894",
         "name": "com.HilisCompany.PopTheBalloons.huawei",
-        "processId": 15501,
+        "processId": 18250,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -40,32 +40,38 @@
         },
         {
             "deviceId": "L2NDU19A16000894",
+            "name": "com.huawei.android.launcher",
+            "processId": 2487,
+            "exited": false
+        },
+        {
+            "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.PopTheBalloons.huawei",
-            "processId": 11185,
+            "processId": 4747,
             "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.PopTheBalloons.huawei",
-            "processId": 12137,
+            "processId": 8346,
             "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.PopTheBalloons.huawei",
-            "processId": 13692,
+            "processId": 14571,
             "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.PopTheBalloons.huawei",
-            "processId": 14618,
+            "processId": 16421,
             "exited": true
         },
         {
             "deviceId": "L2NDU19A16000894",
             "name": "com.HilisCompany.PopTheBalloons.huawei",
-            "processId": 15501,
+            "processId": 18250,
             "exited": false
         }
     ],
