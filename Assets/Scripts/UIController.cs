@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-
+using HuaweiMobileServices.InAppComment;
 
 public class UIController : MonoBehaviour
 {
@@ -10,10 +10,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject storeCanvas;
    
    
-    //public TextMeshProUGUI blackBalloonCountValue;
-    //public TextMeshProUGUI blueBalloonCountValue;
-    //public TextMeshProUGUI greenBalloonCountValue;
-    
 
     public GameObject nativeAdButton;
     
@@ -23,10 +19,8 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         Debug.Log("ShowInAppComment");
-
+        InAppComment.ShowInAppComment();
         
-        //InAppComment.ShowInAppComment();
-        //analyticsKitManager = HMSAnalyticsKitManager.Instance;
         gameCanvas.SetActive(true);
         gameOverCanvas.SetActive(false);
         storeCanvas.SetActive(false);
@@ -59,7 +53,11 @@ public class UIController : MonoBehaviour
         PlayerPrefs.SetInt("RealMaxSpeed", 6);
 
         int currentBoosterCount = PlayerPrefs.GetInt("booster_count", 0);
-        currentBoosterCount--;
+        if(currentBoosterCount > 0)
+        {
+            currentBoosterCount--;
+        }
+            
         PlayerPrefs.SetInt("booster_count", currentBoosterCount);
         PlayerPrefs.Save();
 

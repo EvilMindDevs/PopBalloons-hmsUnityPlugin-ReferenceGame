@@ -4,15 +4,12 @@ using HuaweiMobileServices.Utils;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using HuaweiMobileServices.Base;
 
 public class StoreManager : MonoBehaviour
 {
     public static Action<string> IAPLog;
-
-    HashSet<string> ownedProducts = new HashSet<string>();
 
     private List<InAppPurchaseData> productPurchasedList;
 
@@ -37,18 +34,8 @@ public class StoreManager : MonoBehaviour
     public void BuyProduct(string productId)
     {
     
-
-        //if (ownedProducts.Contains(productId))
-        //{
-        //    // Product already owned, deliver it to the user
-        //    //DeliverProduct(productId);
-        //    return;
-        //}
-
         HMSIAPManager.Instance.BuyProduct(productId);
-        
-        
-
+       
     }
     private void OnBuyProductFailure(int obj)
     {
@@ -63,11 +50,7 @@ public class StoreManager : MonoBehaviour
         }
     }
 
-    private void DeliverProduct(string productId)
-    {
-        
-    }
-
+   
     private void OnConsumeProduct(PriceType priceType)
     {
         IIapClient iapClient = Iap.GetIapClient();
@@ -108,7 +91,7 @@ public class StoreManager : MonoBehaviour
 
     private void OnBuyProductSuccess(PurchaseResultInfo obj)
     {
-        Debug.Log("hilal OnBuyProductSuccess:" + obj.InAppPurchaseData.ProductName);
+        Debug.Log("OnBuyProductSuccess:" + obj.InAppPurchaseData.ProductName);
 
         if (obj.InAppPurchaseData.ProductId == HMSIAPConstants.NoAds)
         {
@@ -120,13 +103,10 @@ public class StoreManager : MonoBehaviour
         }
         else if (obj.InAppPurchaseData.ProductId == HMSIAPConstants.Booster)
         {
-            BalloonInfliater balloonInfliater = new BalloonInfliater();
-            balloonInfliater.SpeedBooster();
             int currentBoosterCount = PlayerPrefs.GetInt("booster_count", 0);
             currentBoosterCount++;
             PlayerPrefs.SetInt("booster_count", currentBoosterCount);
             PlayerPrefs.Save();
-            Debug.Log("hilal bu BoosterCount " + currentBoosterCount.ToString());
             Debug.Log("BOOSTER HAS PURCHASED");
 
             UIController uIController = FindObjectOfType<UIController>();
@@ -148,10 +128,8 @@ public class StoreManager : MonoBehaviour
         {
             foreach (var obj in result.InAppPurchaseDataList)
             {
-                ownedProducts.Add(obj.ProductId);
-                            
+                                      
                 Debug.Log("[HMS IAP MANAGER] OnObtainOwnedPurchasesSuccess icerisinde");
-
                 HMSIAPManager.Instance.ConsumePurchaseWithToken(obj.PurchaseToken);
 
             }
@@ -191,7 +169,7 @@ public class StoreManager : MonoBehaviour
 
         if (productInfos == null)
         {
-            Debug.Log("PRODUCT INFOS NULL MALESEF");
+            Debug.Log("PRODUCT INFOS NULL");
         }
         foreach (ProductInfoResult res in productInfos)
             for (int i = 0; i < res.ProductInfoList.Count; i++)
@@ -220,11 +198,10 @@ public class StoreManager : MonoBehaviour
         product.SetActive(true);
         if (product.transform.childCount > 0)
         {
-            Debug.Log("[HMS CHILD COUNT CHILD COUNT CHILD COUNT" + product.transform.childCount.ToString());
             product.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.ProductName;
             product.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.ProductDesc;
             product.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.Price + productInfo.Currency;
-            //product.transform.GetChild(4).gameObject.GetComponent<Button>().onClick.AddListener(delegate { BuyProduct(productInfo.ProductId); });
+           
         }
         else
             Debug.Log("product doesnt have any child");
@@ -233,7 +210,7 @@ public class StoreManager : MonoBehaviour
     }
     private void OnCheckIapAvailabilityFailure(HMSException obj)
     {
-        //isIAPavailable = false;
+        
         IAPLog?.Invoke("IAP is not ready.");
     }
 

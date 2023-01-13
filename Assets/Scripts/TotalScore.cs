@@ -32,12 +32,7 @@ public class TotalScore : MonoBehaviour
             UIController uiController = FindObjectOfType<UIController>();
             uiController.EndTheGame();
         }
-        //else
-        //{
-        //    winText.SetActive(true);
-        //    UIController uiController = FindObjectOfType<UIController>();
-        //    uiController.EndTheGame();
-        //}
+        
     }
 
 

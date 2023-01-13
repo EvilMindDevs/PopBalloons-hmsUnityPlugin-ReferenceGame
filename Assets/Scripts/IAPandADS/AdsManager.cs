@@ -19,10 +19,8 @@ public class AdsManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("BBBBBBBBBBUUUUUUUUURRRRRRRRRRRRRAAAAAAAAAAAAAAAAADDDDDDDDDDAAAAAAAAAAA");
         if (PlayerPrefs.GetInt("isSubscriptionActive") == 0)
         {
-            Debug.Log("simdi burada issubsactive playerprefi 0 mis yani!!!!!!!!!!!");
             HMSAdsKitManager.Instance.OnRewardedAdLoaded = OnRewardedAdLoaded;
             HMSAdsKitManager.Instance.OnRewardAdCompleted = OnRewardAdCompleted;
 
@@ -35,16 +33,7 @@ public class AdsManager : MonoBehaviour
         }
         var builder = HwAds.RequestOptions.ToBuilder();
 
-        //builder
-        //    .SetConsent("tcfString")
-        //    .SetNonPersonalizedAd((int)NonPersonalizedAd.ALLOW_ALL)
-        //    .Build();
-
-        //bool requestLocation = true;
-        //var requestOptions = builder.SetConsent("testConsent").SetRequestLocation(requestLocation).Build();
-
-        //Debug.Log($"RequestOptions NonPersonalizedAds:  {requestOptions.NonPersonalizedAd}");
-        //Debug.Log($"Consent: {requestOptions.Consent}");
+        
     }
 
     private void OnConsentSuccess(ConsentStatus arg1, bool arg2, IList<AdProvider> arg3)
@@ -59,7 +48,6 @@ public class AdsManager : MonoBehaviour
 
     public void DisableAds()
     {
-        Debug.Log("subs active");
         PlayerPrefs.SetInt("isSubscriptionActive", 1);
         HMSAdsKitManager.Instance.HideBannerAd();
     }
@@ -68,7 +56,6 @@ public class AdsManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("isSubscriptionActive") == 0)
         {
-            Debug.Log("simdi burada showads icinde issubsactive playerprefi 0 mis yani!!!!!!!!!!!");
             HMSAdsKitManager.Instance.ShowBannerAd();
             if (HMSAdsKitManager.Instance.IsInterstitialAdLoaded)
             {
@@ -77,12 +64,6 @@ public class AdsManager : MonoBehaviour
 
             rewardedAdPanel.SetActive(true);
 
-            //Debug.Log("HMSAdsKitManager.Instance.IsRewardedAdLoaded ============ " + HMSAdsKitManager.Instance.IsRewardedAdLoaded);
-
-            //while (!HMSAdsKitManager.Instance.IsRewardedAdLoaded)
-            //{
-            //    HMSAdsKitManager.Instance.LoadRewardedAd();
-            //}
         }
         
         if(PlayerPrefs.GetInt("isSubscriptionActive") == 1)
@@ -119,7 +100,7 @@ public class AdsManager : MonoBehaviour
         if(focus && didRewardedEarned)
         {
             Debug.Log("app has gained focus");
-            //OnRewardAdCompleted?.invoke 
+ 
 
         }
     }

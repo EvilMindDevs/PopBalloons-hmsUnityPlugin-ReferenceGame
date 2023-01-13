@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ClickToPop : MonoBehaviour, IPopper<GameObject>, IScore<GameObject>
 {
-
     private short thisScoreOnClick;
+
     private int blackBalloonCount;
     private int blueBalloonCount;
     private int greenBalloonCount;

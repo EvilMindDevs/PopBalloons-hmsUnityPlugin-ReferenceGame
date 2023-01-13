@@ -11,7 +11,9 @@ public class BalloonInfliater : MonoBehaviour
     [Range(0, 1)] public float riseSize = .5f;
     public float timeToReachMaxSize = 1;
     public float maxDrag = 100;
-    private float maxSpeed;
+      
+    private float maxSpeed = 6;
+    private float minSpeed = 2;
 
     private float randomSpeed;
 
@@ -28,8 +30,17 @@ public class BalloonInfliater : MonoBehaviour
 
     void Start()
     {
-        maxSpeed = PlayerPrefs.GetInt("RealMaxSpeed", 6);
-        randomSpeed = UnityEngine.Random.Range(2, maxSpeed);
+        
+        int currentBoosterCount = PlayerPrefs.GetInt("booster_count", 0);
+
+        if(currentBoosterCount > 0)
+        {
+            maxSpeed = 10;
+            minSpeed = 4;
+
+        }
+        
+        randomSpeed = UnityEngine.Random.Range(minSpeed, maxSpeed);
         
 
         rb = GetComponent<Rigidbody>();
@@ -42,13 +53,7 @@ public class BalloonInfliater : MonoBehaviour
         startDrag = rb.drag;
 
     }
-    public void SpeedBooster()
-    {
-        PlayerPrefs.SetInt("RealMaxSpeed", 10);
-        int myIntValue = PlayerPrefs.GetInt("RealMaxSpeed");
-        Debug.Log("this is the int value of real max speed " + myIntValue);
-    }
-
+  
     private void Update()
     {
         BeginInfliate();
@@ -57,38 +62,42 @@ public class BalloonInfliater : MonoBehaviour
 
     private void BeginInfliate()
     {
+        // Increment the inflation time
         timeInflating += Time.deltaTime;
+        // Turn off gravity
         rb.useGravity = false;
+        // Set the object's velocity to an upward vector
         rb.velocity = new Vector3(0, speed, 0);
 
-        //Zaman deðerinin min max arasýnda kalmasýný saðlar.
+        // Clamp the inflation time within the max inflation time
         timeInflating = Mathf.Clamp(timeInflating, 0, timeToReachMaxSize);
 
-        //Balonun zamanla azalan ivme ile þiþmesini saðlar
+        // Interpolate the object's local scale between the base scale and target scale
         transform.localScale = Vector3.Lerp(baseScale, targetScale, timeInflating / timeToReachMaxSize);
 
-        //Balonun sürüklenmesini belirler. Balon ne kadar büyükse(ne kadar þiþirilirse) o kadar hýzlý yükselir. Bunun tam tersi de geçerlidir.
-        rb.drag = Mathf.Lerp(startDrag, maxDrag, InverseLerp(baseScale, sizeToRise, transform.localScale)); 
+        // Interpolate the object's drag value between the start drag and max drag
+        rb.drag = Mathf.Lerp(startDrag, maxDrag, InverseLerp(baseScale, sizeToRise, transform.localScale));
 
-        speed = Mathf.Lerp(0, randomSpeed, InverseLerp(sizeToRise, targetScale, transform.localScale)); 
+        // Interpolate the object's speed between 0 and the random speed
+        speed = Mathf.Lerp(0, randomSpeed, InverseLerp(sizeToRise, targetScale, transform.localScale));
 
+        // If the object's scale has reached the "sizeToRise" value, turn off gravity and set the velocity
         if (transform.localScale.magnitude >= sizeToRise.magnitude)
         {
             rb.useGravity = false;
             rb.velocity = new Vector3(0, speed, 0);
         }
+        // If not, turn on gravity
         else
         {
             rb.useGravity = true;
         }        
     }
 
-    //normalize vektörler ayný yönü gösterirlerse 1 ters yönse -1 döndürür. bu hesaplamada lerp kullanýmýnda, a noktasýndan gideceðimiz b noktasýnýn hesaplamalarýný yapýyoruz.
-    //balon sabit kalmayacaktýr çünkü
     public static float InverseLerp(Vector3 a, Vector3 b, Vector3 value)
     {
         Vector3 AB = b - a;
         Vector3 AV = value - a;
-        return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB); // vector3.dot vektörel büyüklüðü float döndürür.
+        return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB); 
     }
 }
