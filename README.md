@@ -7,377 +7,565 @@ The game also features in-app purchases and ads, allowing you to enhance your ex
 
 The game uses the HMS in-app purchase kit and Ads kit to show a demo of it to how to use.
 
-Please enjoy and have fun playing Bloon Popping!
+Please enjoy and have fun playing Balloon Popping!
 
-Huawei Mobile Services Plugin
+In this project, we explain the use of [Unity Plugin](https://github.com/EvilMindDevs/hms-unity-plugin) of Huawei Mobile Services on this game.
 
-The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services in your Unity game:
+# Huawei Mobile Services Plugin
 
-# Huawei Account Kit
-In App purchases: Consumable, non consumables and Subscriptions.
-Ads: Interstitial, rewarded videos and banner
-Push notifications
-Game leaderboards and achievements
-Huawei Anayltics kit
-Crash Service
-Remote Config
-Auth Service
-Drive Kit
-Nearby Service
-App Messaging
+The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services in your Unity game.
 
-# Requirements
-Android SDK min 21 Net 4.x
+[Requirements](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/getting-started/what-you-will-need)
 
-Connect your game Huawei Mobile Services in 5 easy steps
-Register your app at Huawei Developer
-
-## Important
-This plugin supports:
-* Unity version 2019, 2020, 2021 - Developed in master Branch
-* Unity version 2018 - Developed in 2.0-2018 Branch
-
-**Make sure to download the corresponding unity package for the Unity version you are using from the release section**
-
-## Troubleshooting
-Please check our [wiki page](https://github.com/EvilMindDevs/hms-unity-plugin/wiki/Troubleshooting)
-
-## Status
-This is an ongoing project, currently WIP. Feel free to contact us if you'd like to collaborate and use Github issues for any problems you might encounter. We'd try to answer in no more than a working day.
-
-## Connect your game Huawei Mobile Services in 5 easy steps
-
-1. Register your app at Huawei Developer
-2. Import the Plugin to your Unity project
-3. Connect your game with the HMS Kit Managers
-
-### 1 - Register your app at Huawei Developer
-
-#### 1.1-  Register at [Huawei Developer](https://developer.huawei.com/consumer/en/)
-
-#### 1.2 - Create an app in AppGallery Connect.
-During this step, you will create an app in AppGallery Connect (AGC) of HUAWEI Developer. When creating the app, you will need to enter the app name, app category, default language, and signing certificate fingerprint. After the app has been created, you will be able to obtain the basic configurations for the app, for example, the app ID and the CPID.
-
-1. Sign in to Huawei Developer and click **Console**.
-2. Click the under **Ecosystem services**, click on **App Services**.
-3. Click on the **AppGallery Connect** under Distribution and Promotion.
-4. Click **My apps**.
-5. On the displayed **My apps** page, click **New app** on top right.
-6. Enter the App name, select App category (Game), and select Default language as needed.
-7. Upon successful app creation, the App information page will automatically display. There you can find the App ID that is assigned by the system to your app.
-
-#### 1.3 Add Package Name
-Set the package name of the created application on the AGC.
-
-1. In app information page, there is a label at top saying **"My Apps"**. Mouse hover on it and select **My Project**. This will lead you to the project information of your application
-2. You should see a pop up asking about your package name for the application. Select **Manually enter a package name**
-3. Fill in the application package name in the input box and click save.
-
-> Your package name should end in .huawei in order to release in App Gallery
-
-#### Generate a keystore.
-
-Create a keystore using Unity or Android Tools. make sure your Unity project uses this keystore under the **Build Settings>PlayerSettings>Publishing settings**
+[Quick Start](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/getting-started/quick-start)
 
 
-#### Generate a signing certificate fingerprint.
 
-During this step, you will need to export the SHA-256 fingerprint by using keytool provided by the JDK and signature file.
+In this project we are using those kits:
 
-1. Open the command window or terminal and access the bin directory where the JDK is installed.
-2. Run the keytool command in the bin directory to view the signature file and run the command.
+* [Account](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/account-kit)
+* [IAP](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/in-app-purchases)
+* [Ads](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/ads-kit)
+* [Push](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/push-kit)
+* [Game Service](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/game-service)
+* [Analytics](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/analytics-kit)
+* [Crash Service](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/crash-service)
+* [Remote Configuration](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/remote-configuration)
+* [Auth Service](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/auth-service)
+* [App Linking](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/app-linking)
+* [In App Comment](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/in-app-comments)
+* [App Messaging](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/app-messaging)
+* [Nearby Service](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/nearby-service)
+* [Cloud DB](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/cloud-db)
+* [Scan](https://evilminddevs.gitbook.io/hms-unity-plugin-beta/kits-and-services/cloud-db)
+* [Location](https://evilminddevs.gitbook.io/hms-unity-plugin/kits-and-services/location-kit)
+* [APM](https://evilminddevs.gitbook.io/hms-unity-plugin/kits-and-services/apm)
+* [Drive](https://evilminddevs.gitbook.io/hms-unity-plugin/kits-and-services/drive-kit)
 
-    ``keytool -list -v -keystore D:\Android\WorkSpcae\HmsDemo\app\HmsDemo.jks``
-3. Enter the password of the signature file keystore in the information area. The password is the password used to generate the signature file.
-4. Obtain the SHA-256 fingerprint from the result. Save for next step.
+## Account Kit
+
+`Purpose In Project` :  Sign in automatically.
 
 
-#### Add fingerprint certificate to AppGallery Connect
-During this step, you will configure the generated SHA-256 fingerprint in AppGallery Connect.
+ `Use In Project` : By calling this method `HMSAccountKitManager.Instance.SignIn();` at GameManager.cs 121
 
-1. In AppGallery Connect, go to **My Project** and select your project.
-2. Go to the App information section, click on **+** button and enter the SHA-256 fingerprint that you generated earlier.
-3. Click √ to save the fingerprint.
+   ```csharp
 
-____
+        #region Unity: Start
 
-### 2 - Import the plugin to your Unity Project
-
-To import the plugin:
-
-1. Download the [.unitypackage](https://github.com/EvilMindDevs/hms-unity-plugin/releases)
-2. Open your game in Unity
-3. Choose Assets> Import Package> Custom
-![Import Package](http://evil-mind.com/huawei/images/importCustomPackage.png "Import package")
-4. In the file explorer select the downloaded HMS Unity plugin. The Import Unity Package dialog box will appear, with all the items in the package pre-checked, ready to install.
-![image](https://user-images.githubusercontent.com/6827857/113576269-e8e2ca00-9627-11eb-9948-e905be1078a4.png)
-5. Select Import and Unity will deploy the Unity plugin into your Assets Folder
-____
-
-### 3 - Update your agconnect-services.json file.
-
-In order for the plugin to work, some kits are in need of agconnect-json file. Please download your latest config file from AGC and import into Assets/StreamingAssets folder.
-![image](https://user-images.githubusercontent.com/6827857/113585485-f488bd80-9634-11eb-8b1e-6d0b5e06ecf0.png)
-____
-
-### 4 - Connect your game with any HMS Kit
-
-In order for the plugin to work, you need to select the needed kits Huawei > Kit Settings.
-![image](https://user-images.githubusercontent.com/6827857/142605459-04ca144e-6b34-4018-8f81-44a5ed67cbf3.png)
-
-It will automaticly create the GameObject for you and it has DontDestroyOnLoad implemented so you don't need to worry about reference being lost.
-
-Now you need your game to call the Kit Managers from your game. See below for further instructions.
-    
-## Account Kit (Sign In)
-Call login method in order to open the login dialog. Be sure to have AccountKit enabled in Huawei > Kit Settings.
-
-```csharp
-HMSAccountManager.Instance.SignIn();
-```
-
-## Analytics kit
- 
-1. Enable Analtics kit from AGC
-2. Update ...Assets\StreamingAssets\agconnect-services.json file
- 
- Send analytics function:
- 
-``` csharp
-HMSAnalyticsManager.Instance.SendEventWithBundle(eventId, key, value);
-  ```
-  
-## In App Purchases
-Register your products via custom editor under Huawei > Kit Settings > IAP tab.
-![image](https://user-images.githubusercontent.com/6827857/113579431-f8184680-962c-11eb-9bfd-13ec69402536.png)
-Write your product identifier that is in AGC and select product type.
-
-If you check "Initialize On Start" checkbox, it'll automaticly retrieve registered products on Start.
-If you want to initialize the IAP by yourself, call the function mentioned in below. You can also set callbacks as well.
-
-``` csharp
-HMSIAPManager.Instance.CheckIapAvailability();
-
-HMSIAPManager.Instance.OnCheckIapAvailabilitySuccess += OnCheckIapAvailabilitySuccess;
-HMSIAPManager.Instance.OnCheckIapAvailabilityFailure += OnCheckIapAvailabilityFailure;
-
-private void OnCheckIapAvailabilityFailure(HMSException ex)
-    {
-        
-    }
-
-    private void OnCheckIapAvailabilitySuccess()
-    {
-        
-    }
-```
-
-Open the Purchase dialog by calling to BuyProduct method. You can set callbacks and check which product was purchased.
-```csharp
-HMSIAPManager.Instance.BuyProduct(string productID)
-
-HMSIAPManager.Instance.OnBuyProductSuccess += OnBuyProductSuccess;
-
-private void OnBuyProductSuccess(PurchaseResultInfo result)
-    {
-        if (result.InAppPurchaseData.ProductId == "removeAds")
+        private void Start()
         {
-            // Write your remove ads logic here.
+            GLog.Log($"Start", GLogName.GameManager);
+
+            HMSAccountKitManager.Instance.SignIn();
+        }
+
+        #endregion
+
+  ```
+
+
+
+## IAP
+
+`Purpose In Project` :  Selling the product of "Remove Ads".
+
+
+ `Use In Project` : 
+ 
+ 1. By clicking "Remove Ads" button in game menu.This button calls this method  `HMSAccountKitManager.Instance.SignIn();` at UIView.cs 231
+
+   ```csharp
+
+    #region ButtonClick: BuyProduct
+
+    public void ButtonClick_BuyProduct(string productId)
+    {
+        DelegateStore.BuyProduct?.Invoke(productId);
+    }
+
+    #endregion
+
+  ```
+
+2. `DelegateStore.BuyProduct?.Invoke(productId);` command invokes `OnBuyProduct(string productID)` at IAPManager.cs 154
+
+
+```csharp
+
+
+    #region Events: OnBuyProduct
+
+    private void OnBuyProduct(string productID)
+    {
+        HMSIAPManager.Instance.BuyProduct(productID);
+    }
+
+    #endregion
+
+
+```
+
+  3. If purchase request return success `OnBuyProductSuccess(PurchaseResultInfo obj)` callback method will be called automatically.In this method we handle the having "Remove Ads" item.
+
+
+   ```csharp
+
+    #region Events: BuyProductSuccess
+
+    private void OnBuyProductSuccess(PurchaseResultInfo obj)
+    {
+        if (obj.InAppPurchaseData.ProductId == "1006")
+        {
+            GLog.Log($"OnBuyProductSuccess {obj.InAppPurchaseData.ProductName}", GLogName.IAPManager);
+
+            Warehouse.RemoveAds = true;
         }
     }
-```
 
-Restore purchases that have been bought by user before.
-```csharp
- HMSIAPManager.Instance.RestorePurchases((restoredProducts) =>
-        {
-            //restoredProducts contains all products that has been restored.
-        });
-```
+    #endregion
 
-You can also use "Create Constant Classes" button to create a class called HMSIAPConstants which will contain all products as constants and you can call it from your code. Such as;
-```csharp
-HMSIAPManager.Instance.BuyProduct(HMSIAPConstants.testProduct);
-```
 
-## Ads kit
-There is a custom editor in Huawei > Kit Settings > Ads tab.
-![image](https://user-images.githubusercontent.com/6827857/142604639-57b5856d-f001-492f-9014-eb670eb50e8f.png)
+  ```
 
-You can enable/disable ads that you want in your project.
-Insert your Ad Id into these textboxes in the editor.
-If you want to use test ads, you can check UseTestAds checkbox that'll overwrite all ad ids with test ads.
 
-If you want to know more details about Splash Ad and its configuration, please check this article written by @sametguzeldev [here](https://medium.com/huawei-developers-tr/extend-your-advertisement-with-hms-ads-kit-splash-ad-in-unity-3e13f38f3abe).
 
-Then you can call certain functions such as
-```csharp
-    HMSAdsKitManager.Instance.ShowBannerAd();
-    HMSAdsKitManager.Instance.HideBannerAd();
-    HMSAdsKitManager.Instance.ShowInterstitialAd();
-    
-    HMSAdsKitManager.Instance.OnRewarded = OnRewarded;
-    HMSAdsKitManager.Instance.ShowRewardedAd();
-    
-    public void OnRewarded(Reward reward)
+
+## Ads Kit
+
+`Purpose In Project` :  Monetizing with Interstial Ads and Banner Ads.
+
+
+`Use In Project` : 
+ 
+ 1. Banner Ads : By calling this method `ShowBanner()` at AdsManager.cs 102.We are calling this method at first,and you can hide banner ads by calling `HideBanner()` at AdsManager.cs 112.
+
+   ```csharp
+    #region Ads: Banner
+
+    public void ShowBanner()
     {
-       
+        if (!IsAdsActive)
+            return;
+
+        GLog.Log($"ShowBanner", GLogName.AdsManager);
+
+        HMSAdsKitManager.Instance.ShowBannerAd();
+    }
+
+    public void HideBanner()
+    {
+        GLog.Log($"HideBanner", GLogName.AdsManager);
+
+        HMSAdsKitManager.Instance.HideBannerAd();
+    }
+
+    #endregion
+  ```
+
+
+2. Interstial Ads : By calling this method `ShowInterstitial()` at AdsManager.cs 145.We are calling this method at the end of sessions.
+
+```csharp
+    #region Ads: Interstitial
+
+    public void ShowInterstitial()
+    {
+        if (!IsAdsActive)
+            return;
+
+        GLog.Log($"ShowInterstitial", GLogName.AdsManager);
+
+        HMSAdsKitManager.Instance.ShowInterstitialAd();
+    }
+
+    #endregion
+```
+
+
+
+## Push Kit
+
+`Purpose In Project` :  Send notificatons to users when we want.
+
+ `Use In Project` : We can send notificaton at [App Gallery Connect]( https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/).
+
+
+## Game Service
+
+`Purpose In Project` :  Handle the success of users.
+
+`Use In Project` : 
+ 
+ 1. Leaderboard : We can see leaderboard by clicking leaderboard button in game menu ui.Button click calls `OnShowLeaderboard()` at ScoreManager.cs 292 and we can handle score by calling `SendScore(int score)` at ScoreManager.cs 277.
+
+  ```csharp
+    #region Event: ShowLeaderboard
+
+    private void OnShowLeaderboard()
+    {
+        Debug.Log("OnShowLeaderboard");
+        HMSLeaderboardManager.Instance.ShowLeaderboards();
+    }
+
+    #endregion
+  ```
+
+2. Achievement : By calling this method `SendScore(int score)` at ScoreManager.cs 226.We can handle the passing 10 points achievement.
+
+  ```csharp
+    public void SendScore(int score)
+    {
+        HMSLeaderboardManager.Instance.SubmitScore(LeaderBoardId, score);
+
+        if (score >= 10)
+        {
+            HMSAchievementsManager.Instance.UnlockAchievement(AchievementId);
+        }
+    }
+
+  ```
+
+
+
+
+## Analytics Kit
+
+`Purpose In Project` :  Analyse the session starts and ends count.
+
+ `Use In Project` :  With those callbacks `OnSessionStart() , OnSessionEnd()` at AnalyticsManager.cs 15,26.
+
+   ```csharp
+
+        #region Events: OnSessionStart
+
+        protected override void OnSessionStart(object sender, GEvent<object> eventData)
+        {
+            base.OnSessionStart(sender, eventData);
+
+            HMSAnalyticsKitManager.Instance.SendEventWithBundle("Session_Start", "Session_Start", "OK");
+        }
+
+        #endregion
+
+        #region Events: OnSessionEnd
+
+        protected override void OnSessionEnd(object sender, GEvent<object> eventData)
+        {
+            base.OnSessionStart(sender, eventData);
+
+            HMSAnalyticsKitManager.Instance.SendEventWithBundle("Session_End", "Session_End", "OK");
+        }
+
+        #endregion
+
+  ```
+
+
+## Crash Service
+
+`Purpose In Project` : Learn the cause of unexpected exits of application.
+
+ `Use In Project` : We can read the crash reports from [App Gallery Connect]( https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/).
+
+
+
+## Remote Configuration
+
+`Purpose In Project` :  Modifying the game without deploying a new version.
+
+ `Use In Project` :  We are fetching the values at the beginning of application.Then we are using that values in game mechanic.(GameManager.cs 147)
+
+   ```csharp
+
+        #region HMS: RemoteConfig
+
+        private void RemoteConfig()
+        {
+            void OnFecthSuccess(ConfigValues config)
+            {
+
+                HMSRemoteConfigManager.Instance.Apply(config);
+
+                var _blockMoveTimeCoeff = HMSRemoteConfigManager.Instance.GetValueAsDouble("BlockMoveTimeCoeff");
+                var _backgroundColorIndex = HMSRemoteConfigManager.Instance.GetValueAsLong("BGColor");
+
+                backgroundColorIndex = int.Parse(_backgroundColorIndex.ToString());
+                blockMoveTimeCoeff = (float)_blockMoveTimeCoeff;
+
+                Debug.Log($"coeff {blockMoveTimeCoeff}");
+                Debug.Log($"BG Color {_backgroundColorIndex}");
+
+                remoteConfigIsOk = true;
+            }
+
+            void OnFecthFailure(HMSException exception)
+            {
+                Debug.Log($" fetch() Failed Error Code => {exception.ErrorCode} Message => {exception.WrappedExceptionMessage}");
+            }
+
+            HMSRemoteConfigManager.Instance.OnFecthSuccess = OnFecthSuccess;
+            HMSRemoteConfigManager.Instance.OnFecthFailure = OnFecthFailure;
+            HMSRemoteConfigManager.Instance.Fetch(5);
+        }
+
+        #endregion
+
+
+  ```
+
+## Auth Service
+
+`Purpose In Project` :  Potential need of login with
+
+* WeChat
+* QQ
+* Weibo
+* Apple
+* Google
+* Facebook
+* Twitter
+
+## App Linking
+
+`Purpose In Project` :  Provide users to share game application with their friends.
+
+ `Use In Project` :  By clicking sharing button in game menu,this calls the `ShareLongLink()` at AppLinkingManager.cs 177.
+
+```csharp
+    public void ShareLongLink()
+    {
+        Debug.Log("ShareLongLink");
+        AGConnectAppLinking.ShareLink(longLink);
     }
 ```
 
-## Game kit
-There is a custom editor in Huawei > Kit Settings > Game Service tab.
-![image](https://user-images.githubusercontent.com/6827857/114309121-cef52b80-9aee-11eb-93d8-e69fda402ee3.png)
+## In App Comment
 
-Check "Initialize on Start" checkbox to initialize the Game Service Kit on Start or call HMSGameManager.Instance.Init() in your custom logic.
+`Purpose In Project` : Providing users to submit ratings and make comments for app without leaving the application.
+
+ `Use In Project` : Automatically running at the session end callback  `OnSessionEnd` at GameManager.cs 245.
 
 ```csharp
-   HMSGameManager.Instance.Init();
+    #region Events: OnSessionEnd
+
+    private void OnSessionEnd(object sender, GEvent<object> eventData)
+    {
+        GLog.Log($"OnSessionEnd", GLogName.GameManager);
+        InAppComment.ShowInAppComment();
+    }
+
+    #endregion
 ```
 
-You can use "Create Constant Classes" button to create a class called HMSLeaderboardConstants or HMSAchievementConstants which will contain all achievements and leaderboards as constants and you can call it from your code. Such as;
+## App Messaging
+
+`Purpose In Project` : Remind the user of "Remove Ads" IAP product.
+
+ `Use In Project` : Automatically running with `Session_End` analytic event.You can arrange this from AGC.
+
+<table>
+
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/EvilMindDevs/Stack-HmsUnityPlugin-ReferenceGame/Master/Assets/Images/appMessaging.png" width=543 height=323></td>
+
+  </tr>
+ </table>
+
+## Nearby Service
+
+`Purpose In Project` : Broadcasting the game as if it is being played live on another device by transferring input
+
+ `Use In Project` : In "Pre" unity-scene , there is a NearbyDeviceManager gameobject.This includes `NearbyDeviceManager`, `NearbyServer` and `NearbyClient` scripts.We are transferring input to other device by these scripts.These scripts subscribes Touch and TapToPlay events at `DelegateStore`.
+
+ 
+## CloudDB
+
+`Purpose In Project` : Save all game session scores with session number (sequential) and display this at popup.
+
+ `Use In Project` : We are saving session at `CloudDBManager` 157, AddSession method.
+
 ```csharp
-    HMSLeaderboardManager.Instance.SubmitScore(HMSLeaderboardConstants.topleaderboard,50);
-    HMSAchievementsManager.Instance.RevealAchievement(HMSAchievementConstants.firstshot);
-```
 
-You can call native calls to list achievements or leaderboards.
+        public void AddSession(int score)
+        {
+            GLog.Log($"AddSession", GLogName.CloudDBManager);
+
+            var gameSession = new GameSessions();
+            var token = Guid.NewGuid().ToString();
+            var sessionNumber = ++SessionNumber;
+
+            gameSession.HuaweiIdMail = GameManager.Instance.Uid;
+            gameSession.Id = token;
+            gameSession.SessionNumber = sessionNumber;
+            gameSession.Score = score;
+
+            cloudDBManager.ExecuteUpsert(gameSession);
+        }
+
+```
+We are showing ScoreTable popup by clicking ScoreTable Button at menu.This button calls following command  `UIView` 88.
+
 ```csharp
-  HMSAchievementsManager.Instance.ShowAchievements();
-  HMSLeaderboardManager.Instance.ShowLeaderboards();
+
+        Btn_ShowScoreTablePopup.onClick.AddListener(delegate ()
+        {
+             DelegateStore.ShowPopup?.Invoke(PopupType.ScoreTable);
+        });
+
 ```
 
-# App Update in Game Service
+This command query sessions from CloudDB by calling QuerySessions method at `CloudDBManager` 141.
 
-There is a method in Game Service called CheckAppUpdate that will trigger the update mechanism of HMS to detect if there is newer version in AppGallery.
-It triggers OnAppUpdateInfo inside HMSGameManager that is returning status,rtnCode,rtnMessage,isExit,buttonStatus. This callback gets called after CheckAppUpdate is done.
-If you want to receive this callback, please subscribe into it before calling CheckAppUpdate.
 
-It requires two booleans;
-showAppUpdate: Making this true will prompt a native UI that will show the user there is a newer version if there is an update.
-forceAppUpdate: Making this true will remove the cancel button from the UI and forcing user to update.
 ```csharp
-    HMSGameManager.Instance.OnAppUpdateInfo = OnAppUpdateInfo;
-    HMSGameManager.Instance.CheckAppUpdate(showAppUpdate,forceAppUpdate);
+
+        public void QuerySessions()
+        {
+            GLog.Log($"QuerySessions", GLogName.CloudDBManager);
+
+            queryIsOK = false;
+            gameSessionsList.Clear();
+
+            CloudDBZoneQuery mCloudQuery = 
+            CloudDBZoneQuery.Where(
+              new AndroidJavaClass(GameSessionsClass));
+
+            mCloudQuery.EqualTo("huaweiIdMail", GameManager.Instance.Uid);
+
+            cloudDBManager.ExecuteQuery
+            (
+              mCloudQuery,
+              CloudDBZoneQueryCloudDBZoneQueryPolicy.CLOUDDBZONE_CLOUD_CACHE
+            );
+        }
+
 ```
 
-# Connect API
-2.1.0 version comes with Connect API features!
-Right now we've implemented Publishing API and PMS API. To be able to use these APIs, you need to create an API Client through AppGallery Connect.
-
-After selecting your project on AGC, please go to Users and Permissions section.
-Find API key section on the left side and click Connect API.
-On the right side, you will see a button called "Create". Click on it to create an API Client for Connect API.
-![image](https://user-images.githubusercontent.com/6827857/146188264-f423b51c-c5eb-4de1-a230-3afd6f2f39ad.png)
-
-After creating your key, please copy Client ID and Key section.
-![image](https://user-images.githubusercontent.com/6827857/146189847-6d49f155-472b-4259-b3e2-760599662ae4.png)
-
-Paste your Client ID to Client ID section, Key to Client Secret section in Token Obtainer Editor.
-![image](https://user-images.githubusercontent.com/6827857/146190339-db5f98b9-7419-46aa-b660-1deb35f7183e.png)
 
 
-## Publishing API
-This API here to help you to publish your apk or aab after a successfull build. You can access this API by going 
->Huawei>Connect API>Publishing API>Querying App Information
+## Scan Kit
 
-From Querying App Information, you can check you app name, app category and your release state.
-But most fun part starts after those information. Cause those informations there just for letting you know "I can communicate with AppGallery".
+`Purpose In Project` : Set user "NoAds" item owner by QR Code.
 
-After informations there are a checkbox called "Upload After Build". If you select this checkbox, than Plugin will ask you everytime you do a successfull build "Should I send this apk/aab to AppGallery Connect?". If you select yes, than sending work will be started and you can check it from console or from progress bar. After uploading, you can check your apk/abb from the App Gallery Connect.
+ `Use In Project` : We are saving session at `ScanKitManager` 114, OnScanSuccess method.
+ Firstly we click the scan button ,this button calls following command  `UIView` 88.
 
-***Note: If you are using AAB, you should consider reading the warning after enabling the checkbox. 
-"Please Check the App Signing Feature Enabled on AppGallery Connect For Uploading AAB Packages"***
+```csharp
 
-![readmePhotoCensored](https://user-images.githubusercontent.com/16370078/145428901-ba2150ca-995d-443d-9498-24c4e64e6760.png)
+            Btn_ScanKit.onClick.AddListener(delegate ()
+            {
+                DelegateStore.Scan?.Invoke();
+            });
 
-## PMS API
-This API here to help you to manage your products. You can access this API by going 
->Huawei>Connect API>PMS API
+```
+then following command is called then start to scan  `ScanKitManager` 75.
 
-***Query IAP Products***, You can view all of your products with or without filtering by Product ID and Product name.
+```csharp
 
-You can create a product with ***Create a Product*** or import your products with ***Create Products***.
+    private void OnScan()
+    {
+        Debug.Log($"OnScan");
 
-***Note: You can not edit your deleted products.
-Note: You can not change your products' purchase type which you created.***
+        HMSScanKitManager.Instance.Scan(HmsScanBase.ALL_SCAN_TYPE);
+    }
 
-![readmePhotoCensored](https://user-images.githubusercontent.com/39373386/145815616-c2abf3d2-e303-41df-b000-bb4fe953a86f.png)
+```
 
-## Kits Specification
-Find below the specific information on the included functionalities in this plugin
+When scan is success then this method is called.If code is true user will have No Ads item.
 
-1. Account
-2. In App Purchases
-3. Ads
-4. Push notifications
-5. Game
-6. Analytics
-7. Remote Config
-8. Crash
-9. Cloud DB
-10. Auth Service
-11. Drive Kit
-12. Nearby Service
-13. App Messaging
+```csharp
 
-### Account
+    #region Callbacks
 
-Official Documentation on Account Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/introduction-0000001050048870)
+    private void OnScanSuccess(string text, HmsScan hmsScan)
+    {
+        Debug.Log($"OnScanSuccess {text}");
+        scanResult = text;
 
-### In App Purchases
+        if (text == "StackCode_NoAds")
+        {
+            Warehouse.RemoveAds = true;
+        }
+    }
 
-Official Documentation on IAP Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/introduction-0000001050033062)
+    #endregion
 
-### Ads
+```
 
-Official Documentation on Ads Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/publisher-service-introduction-0000001070671805)
 
-### Push
 
-Official Documentation on Push Kit: [Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/service-introduction-0000001050040060)
+## Location Kit
 
-### Game
+`Purpose In Project` : Show our users content based on their location in the world.
 
-Official Documentation on Game Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/introduction-0000001050121216)
+ `Use In Project` : We are fetching location at `LocationKitManager` 147, at GetLastKnownLocation method.
 
-### Analytics
+```csharp
 
-Official Documentation on Analytics Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/introduction-0000001050745149)
+var latitude = location.GetLatitude();
+var longitude = location.GetLatitude();
 
-### Remote Config
+_latitude = latitude;
+_longitude = longitude;
 
-Official Documentation on Remote Config: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started)
+DelegateStore.ShowLocation?.Invoke(latitude, longitude);
 
-### Crash
+```
+then we are checking location if it is in Turkey at the `UIView` 140.
+Then we are displaying the message the users that live in Turkey.
 
-Official Documentation on Crash Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-crash-getstarted-0000001055260538)
+```csharp
 
-### Cloud DB
+var _lat = LocationKitManager.Instance.Latitude;
+var _long = LocationKitManager.Instance.Longitude;
 
-Official Documentation on Cloud DB: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-clouddb-introduction)
+ if (_lat <= 42 && _lat >= 36)
+  {
+     if (_long <= 45 && _long >= 26)
+     {
+         TxtLocation.text = "KEYİFLİ OYUNLAR !!!";
+         await Task.Delay(2000);
+         TxtLocation.gameObject.SetActive(false);
+     }
+ }
 
-### Auth Service
+```
 
-Official Documentation on Auth Service: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/introduction-0000001050048870)
+## APM Kit
 
-### Drive Kit
+`Purpose In Project` : We are wondering if our users are experiencing performance and slowness problems in the game.
 
-Official Documentation on Drive Kit: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/introduction-0000001050039630)
+ `Use In Project` : We are enabling monitoring the performance at `APMKitManager` 43, Start method.
 
-### Nearby Service
+```csharp
 
-Official Documentation on Nearby Service: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides/contactshield--0000001057494465)
+        HMSAPMManager.Instance.EnableCollection(true);
+        HMSAPMManager.Instance.EnableAnrMonitor(true);
 
-### App Messaging
+```
 
-Official Documentation on App Messaging: [ Documentation](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-appmessage-introduction-0000001071884501)
-______
+## Drive Kit
 
-## License
+`Purpose In Project` : We want our users to automatically save the screenshots of their important moments in the game and then be able to see them.
 
-This project is licensed under the MIT License
+ `Use In Project` : We are calling the capture screenshot command `DriveKitManager` 109, OnSessionEnd callback.
 
+```csharp
+
+StartCoroutine(captureScreenshot(filePath, fileName));
+
+```
+
+Then we are creating file at cloud drive with there commands.
+
+```csharp
+
+yield return new WaitForEndOfFrame();
+
+var file = HMSDriveKitManager.Instance.CreateFiles(MimeType.MimeTypeFromSuffix(".png"), filePath, fileName);
+
+```
 
 
 
