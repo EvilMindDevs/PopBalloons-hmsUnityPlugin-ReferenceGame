@@ -32,7 +32,6 @@ public class AdsManager : MonoBehaviour
            
         }
         var builder = HwAds.RequestOptions.ToBuilder();
-
         
     }
 
@@ -72,8 +71,6 @@ public class AdsManager : MonoBehaviour
             nativeAdPanel.SetActive(false);
 
         }
-
-
     }
     public void OnRewardedAdButton()
     {
@@ -99,14 +96,9 @@ public class AdsManager : MonoBehaviour
     {
         if(focus && didRewardedEarned)
         {
-            Debug.Log("app has gained focus");
- 
+            Debug.Log("app has gained focus"); 
 
         }
-    }
-    public void NativeAdManager()
-    {
-
     }
 
 }

@@ -47,9 +47,7 @@ public class AccountDemo : MonoBehaviour
         HMSAccountKitManager.Instance.OnSignInSuccess = OnLoginSuccess;
         HMSAccountKitManager.Instance.OnSignInFailed = OnLoginFailure;
 
-
         AccountKitLog?.Invoke(NOT_LOGGED_IN);
-
 
     }
 

@@ -35,8 +35,6 @@ public class TotalScore : MonoBehaviour
         
     }
 
-
-
     public void DoubleScore()
     {
         finalScoreOfAll *= 2;

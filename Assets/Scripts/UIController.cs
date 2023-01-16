@@ -9,13 +9,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject gameCanvas;
     [SerializeField] private GameObject storeCanvas;
    
-   
-
     public GameObject nativeAdButton;
     
-    
-
-
     private void Start()
     {
         Debug.Log("ShowInAppComment");
@@ -96,7 +91,7 @@ public class UIController : MonoBehaviour
         StoreManager storeManager = GameObject.FindObjectOfType<StoreManager>();
 
         if (storeManager == null)
-            Debug.Log("store manager is null!!!!!!!!!!");
+            Debug.Log("Store Manager is null!");
         else
         {
             storeManager.FillProducts();
