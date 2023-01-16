@@ -13,7 +13,7 @@ Huawei Mobile Services Plugin
 
 The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services in your Unity game:
 
-Huawei Account Kit
+# Huawei Account Kit
 In App purchases: Consumable, non consumables and Subscriptions.
 Ads: Interstitial, rewarded videos and banner
 Push notifications
