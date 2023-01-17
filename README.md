@@ -3,6 +3,13 @@
 Bloon Popping
 Welcome to Bloon Popping, a fun and challenging game that tests your balloon popping skills! The goal of the game is to pop as many balloons as possible before they reach the top of the screen. Each time you pop a blue, green, or pink balloon, you will earn points. But be careful, if you pop a black balloon, you will lose.
 
+
+
+
+https://user-images.githubusercontent.com/41302444/212827280-52d65b31-e6fd-4441-a925-e3bfaa0bb4fd.mp4
+
+
+
 The game also features in-app purchases and ads, allowing you to enhance your experience and support the development of the game.
 
 The game uses the HMS in-app purchase kit and Ads kit to show a demo of it to how to use.
