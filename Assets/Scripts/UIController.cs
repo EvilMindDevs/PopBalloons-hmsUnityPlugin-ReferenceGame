@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject gameOverCanvas;
     [SerializeField] private GameObject gameCanvas;
     [SerializeField] private GameObject storeCanvas;
+    [SerializeField] private GameObject nativeAdCanvas;
    
     public GameObject nativeAdButton;
     
@@ -79,6 +80,7 @@ public class UIController : MonoBehaviour
         storeCanvas.SetActive(true);
         gameCanvas.SetActive(false);
         gameOverCanvas.SetActive(false);
+        nativeAdCanvas.SetActive(false);
 
         DisplayBoosterCount();
         AfterStoreButton();
@@ -101,7 +103,17 @@ public class UIController : MonoBehaviour
     public void OnResetBelongings()
     {
         PlayerPrefs.SetInt("booster_count", 0);
+        PlayerPrefs.SetInt("isSubscriptionActive", 0);
         PlayerPrefs.Save();
+
+        
+
+        AdsManager adsManager = GameObject.FindObjectOfType<AdsManager>();
+        if (adsManager != null)
+        {
+            adsManager.OnAdsInitialize();
+        }
+
         DisplayBoosterCount();
     }
 
@@ -110,6 +122,6 @@ public class UIController : MonoBehaviour
         GameObject boosterCountValue = GameObject.Find("boosterCount");
 
         int currentBoosterCount = PlayerPrefs.GetInt("booster_count", 0);
-        boosterCountValue.GetComponent<TextMeshProUGUI>().SetText("You Have: " + currentBoosterCount.ToString());
+        boosterCountValue.GetComponent<TextMeshProUGUI>().SetText("You Have: " + currentBoosterCount.ToString() + " Booster");
     }
 }

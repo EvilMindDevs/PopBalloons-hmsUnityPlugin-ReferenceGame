@@ -5,18 +5,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using HuaweiMobileServices.Base;
 
 public class StoreManager : MonoBehaviour
 {
     public static Action<string> IAPLog;
 
-    private List<InAppPurchaseData> productPurchasedList;
-
     private IList<ProductInfoResult> productInfos = new List<ProductInfoResult>();
 
     private int Counter = 0;
-    
 
     public bool isIAPavailable { get; private set; }
 
@@ -29,6 +27,7 @@ public class StoreManager : MonoBehaviour
 
         HMSIAPManager.Instance.OnBuyProductFailure = OnBuyProductFailure;
 
+       
     }
 
     public void BuyProduct(string productId)
@@ -201,7 +200,9 @@ public class StoreManager : MonoBehaviour
             product.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.ProductName;
             product.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.ProductDesc;
             product.transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.Price + productInfo.Currency;
-           
+            product.transform.GetChild(4).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = productInfo.ProductName;
+            product.transform.GetChild(4).gameObject.GetComponent<Button>().onClick.AddListener(delegate { BuyProduct(productInfo.ProductId); });
+
         }
         else
             Debug.Log("product doesnt have any child");

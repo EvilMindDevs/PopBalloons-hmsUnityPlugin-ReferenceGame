@@ -8,7 +8,7 @@ using System;
 using TMPro;
 
 
-public class AccountDemo : MonoBehaviour
+public class AccountManager : MonoBehaviour
 {
     private readonly string TAG = "[HMS] AccountKitDemo ";
 
@@ -23,7 +23,7 @@ public class AccountDemo : MonoBehaviour
 
     #region Singleton
 
-    public static AccountDemo Instance { get; private set; }
+    public static AccountManager Instance { get; private set; }
     private void Singleton()
     {
         if (Instance != null && Instance != this)

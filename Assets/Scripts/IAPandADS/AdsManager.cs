@@ -19,8 +19,19 @@ public class AdsManager : MonoBehaviour
 
     void Start()
     {
+        nativeAdPanel.SetActive(false);
+        OnAdsInitialize();        
+    }
+    public void OnAdsInitialize()
+    {
+        int thisVal = PlayerPrefs.GetInt("isSubscriptionActive");
+        Debug.Log("[HMS Hilal]" + thisVal.ToString());
+        Debug.Log("[HMS Hilal]" + (PlayerPrefs.GetInt("isSubscriptionActive") == 0).ToString());
+
         if (PlayerPrefs.GetInt("isSubscriptionActive") == 0)
         {
+            nativeAdPanel.SetActive(true);
+
             HMSAdsKitManager.Instance.OnRewardedAdLoaded = OnRewardedAdLoaded;
             HMSAdsKitManager.Instance.OnRewardAdCompleted = OnRewardAdCompleted;
 
@@ -29,12 +40,10 @@ public class AdsManager : MonoBehaviour
             HMSAdsKitManager.Instance.ConsentOnSuccess = OnConsentSuccess;
             HMSAdsKitManager.Instance.RequestConsentUpdate();
 
-           
+
         }
         var builder = HwAds.RequestOptions.ToBuilder();
-        
     }
-
     private void OnConsentSuccess(ConsentStatus arg1, bool arg2, IList<AdProvider> arg3)
     {
         Debug.Log("Consent Success");
@@ -48,7 +57,9 @@ public class AdsManager : MonoBehaviour
     public void DisableAds()
     {
         PlayerPrefs.SetInt("isSubscriptionActive", 1);
+        nativeAdPanel.SetActive(false);
         HMSAdsKitManager.Instance.HideBannerAd();
+        
     }
 
     public void ShowAds()

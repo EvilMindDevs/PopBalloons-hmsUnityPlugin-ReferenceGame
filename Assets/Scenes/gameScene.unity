@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 256, y: -122}
-  m_SizeDelta: {x: 228.872, y: 49.522}
+  m_AnchoredPosition: {x: 267.04, y: -94.24512}
+  m_SizeDelta: {x: 643.982, y: 103.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &70368031
 MonoBehaviour:
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -780,8 +780,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0000038146973, y: -0.0000047683716}
+  m_SizeDelta: {x: -29.2699, y: -8.1746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &84436047
 MonoBehaviour:
@@ -1048,8 +1048,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2, y: -0.0000009536743}
+  m_SizeDelta: {x: -30.2238, y: -4.6654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160929175
 MonoBehaviour:
@@ -1529,7 +1529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &333922425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,8 +2287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 241.7, y: -131.3}
-  m_SizeDelta: {x: 228.872, y: 49.522}
+  m_AnchoredPosition: {x: 249.479, y: -87}
+  m_SizeDelta: {x: 590.381, y: 94.481}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439524851
 MonoBehaviour:
@@ -2344,7 +2344,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2800,19 +2800,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468360481}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1117941299}
-        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: BuyProduct
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PinkColor
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &468360481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2929,9 +2917,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2.5999985, y: -0.0000009536743}
+  m_SizeDelta: {x: -56.1551, y: -15.56}
+  m_Pivot: {x: 0.4999997, y: 0.5}
 --- !u!114 &525580414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,8 +3051,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 247, y: -118}
-  m_SizeDelta: {x: 228.872, y: 49.522}
+  m_AnchoredPosition: {x: 244.32, y: -97.24512}
+  m_SizeDelta: {x: 645.234, y: 99.328}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &532348580
 MonoBehaviour:
@@ -3120,7 +3108,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5315,31 +5303,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 995372201}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AdsDisabler, Assembly-CSharp
-        m_MethodName: DisableAds
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1117941299}
-        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: BuyProduct
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: NoAds
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &995372201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5464,6 +5428,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1117941294}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1117941297}
+        m_TargetAssemblyTypeName: AdsManager, Assembly-CSharp
+        m_MethodName: OnAdsInitialize
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6339,7 +6315,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1094736522}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1117941294}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: OnResetBelongings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1094736522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6775,6 +6763,7 @@ MonoBehaviour:
   gameOverCanvas: {fileID: 1328278557}
   gameCanvas: {fileID: 1053961954}
   storeCanvas: {fileID: 2136248600}
+  nativeAdCanvas: {fileID: 1292386941}
   nativeAdButton: {fileID: 1672232634}
 --- !u!114 &1117941295
 MonoBehaviour:
@@ -7078,7 +7067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 169, y: 420}
+  m_AnchoredPosition: {x: -46, y: -153}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159095388
@@ -9158,19 +9147,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1511912307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1117941299}
-        m_TargetAssemblyTypeName: StoreManager, Assembly-CSharp
-        m_MethodName: BuyProduct
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Booster
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1511912307
 MonoBehaviour:
   m_ObjectHideFlags: 0
