@@ -196,17 +196,22 @@ The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services
 
 `Purpose In Project` : Providing users to submit ratings and make comments for app without leaving the application.
 
- `Use In Project` : Automatically running at the session end callback  `OnSessionEnd` at GameManager.cs 245.
+ `Use In Project` : Its called in Start() function at UIController.cs 14.
 
 ```csharp
-    #region Events: OnSessionEnd
+    
 
-    private void OnSessionEnd(object sender, GEvent<object> eventData)
+   private void Start()
     {
-        GLog.Log($"OnSessionEnd", GLogName.GameManager);
+        Debug.Log("ShowInAppComment");
         InAppComment.ShowInAppComment();
+        
+        gameCanvas.SetActive(true);
+        gameOverCanvas.SetActive(false);
+        storeCanvas.SetActive(false);
+
+        
     }
 
-    #endregion
 ```
 
