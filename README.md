@@ -3,10 +3,7 @@
 Bloon Popping
 Welcome to Bloon Popping, a fun and challenging game that tests your balloon popping skills! The goal of the game is to pop as many balloons as possible before they reach the top of the screen. Each time you pop a blue, green, or pink balloon, you will earn points. But be careful, if you pop a black balloon, you will lose.
 
-![image](https://user-images.githubusercontent.com/41302444/212833336-379f9744-234c-41f9-a3b1-e5bca7090fa2.png)
-
-![image](https://user-images.githubusercontent.com/41302444/212833190-836b31c5-f044-40ab-ad61-e9dca4c928b8.png)
-
+![1](https://user-images.githubusercontent.com/41302444/212878089-bb61f780-4064-40b1-bbc9-009ebbf8e39e.png)
 
 
 The game also features in-app purchases and ads, allowing you to enhance your experience and support the development of the game.
@@ -16,6 +13,9 @@ The game uses the HMS in-app purchase kit and Ads kit to show a demo of it to ho
 Please enjoy and have fun playing Balloon Popping!
 
 In this project, we explain the use of [Unity Plugin](https://github.com/EvilMindDevs/hms-unity-plugin) of Huawei Mobile Services on this game.
+
+![Screenshot 2023-01-17 134044](https://user-images.githubusercontent.com/41302444/212878219-ffd3a069-7b9d-473b-8a46-9d2073947c64.png)
+
 
 !Important issue. After logged in wait couple seconds before clicking store button to get products properly. They might not be fully taken from server.(Their name and prices might not match or There could be missing product.)
 
