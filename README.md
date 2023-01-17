@@ -17,6 +17,8 @@ Please enjoy and have fun playing Balloon Popping!
 
 In this project, we explain the use of [Unity Plugin](https://github.com/EvilMindDevs/hms-unity-plugin) of Huawei Mobile Services on this game.
 
+!Important issue. After logged in wait couple seconds before clicking store button to get products properly. They might not be fully taken from server.(Their name and prices might not match or There could be missing product.)
+
 # Huawei Mobile Services Plugin
 
 The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services in your Unity game.
