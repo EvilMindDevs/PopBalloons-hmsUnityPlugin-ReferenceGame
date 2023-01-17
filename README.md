@@ -26,20 +26,21 @@ The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services
 `Purpose In Project` :  Sign in automatically.
 
 
- `Use In Project` : By calling this method `HMSAccountKitManager.Instance.SignIn();` at GameManager.cs 121
+ `Use In Project` : By calling this method `HMSAccountKitManager.Instance.SignIn();` at AccountManager.cs 45
 
    ```csharp
 
-        #region Unity: Start
+    
 
-        private void Start()
-        {
-            GLog.Log($"Start", GLogName.GameManager);
+    void Start()
+    {
+        HMSAccountKitManager.Instance.OnSignInSuccess = OnLoginSuccess;
+        HMSAccountKitManager.Instance.OnSignInFailed = OnLoginFailure;
 
-            HMSAccountKitManager.Instance.SignIn();
-        }
+        AccountKitLog?.Invoke(NOT_LOGGED_IN);
 
-        #endregion
+    }
+
 
   ```
 
@@ -52,22 +53,19 @@ The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services
 
  `Use In Project` : 
  
- 1. By clicking "Remove Ads" button in game menu.This button calls this method  `HMSAccountKitManager.Instance.SignIn();` at UIView.cs 231
+ 1. By clicking "No Ads" button in game menu.This button calls this method has on clicker at StoreManager.cs 204
 
    ```csharp
 
     #region ButtonClick: BuyProduct
 
-    public void ButtonClick_BuyProduct(string productId)
-    {
-        DelegateStore.BuyProduct?.Invoke(productId);
-    }
-
+    product.transform.GetChild(4).gameObject.GetComponent<Button>().onClick.AddListener(delegate { BuyProduct(productInfo.ProductId); });
+    
     #endregion
 
   ```
 
-2. `DelegateStore.BuyProduct?.Invoke(productId);` command invokes `OnBuyProduct(string productID)` at IAPManager.cs 154
+2. ` BuyProduct(productInfo.ProductId); ` command invokes `OnBuyProduct(string productID)` at StoreManager.cs 33
 
 
 ```csharp
@@ -85,21 +83,44 @@ The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services
 
 ```
 
-  3. If purchase request return success `OnBuyProductSuccess(PurchaseResultInfo obj)` callback method will be called automatically.In this method we handle the having "Remove Ads" item.
+  3. If purchase request return success for all products callback method will be called automatically.In this method we handle the having "No Ads", "Booster" and "Pink Color" item.
 
 
    ```csharp
 
     #region Events: BuyProductSuccess
 
-    private void OnBuyProductSuccess(PurchaseResultInfo obj)
+     private void OnBuyProductSuccess(PurchaseResultInfo obj)
     {
-        if (obj.InAppPurchaseData.ProductId == "1006")
-        {
-            GLog.Log($"OnBuyProductSuccess {obj.InAppPurchaseData.ProductName}", GLogName.IAPManager);
+        Debug.Log("OnBuyProductSuccess:" + obj.InAppPurchaseData.ProductName);
 
-            Warehouse.RemoveAds = true;
+        if (obj.InAppPurchaseData.ProductId == HMSIAPConstants.NoAds)
+        {
+            AdsManager adsManager = gameObject.AddComponent<AdsManager>();
+            adsManager.DisableAds();
+            Debug.Log("NOADS HAS PURCHASED");
+            
+            
         }
+        else if (obj.InAppPurchaseData.ProductId == HMSIAPConstants.Booster)
+        {
+            int currentBoosterCount = PlayerPrefs.GetInt("booster_count", 0);
+            currentBoosterCount++;
+            PlayerPrefs.SetInt("booster_count", currentBoosterCount);
+            PlayerPrefs.Save();
+            Debug.Log("BOOSTER HAS PURCHASED");
+
+            UIController uIController = FindObjectOfType<UIController>();
+            uIController.DisplayBoosterCount();
+
+        }
+        else if (obj.InAppPurchaseData.ProductId == HMSIAPConstants.PinkColor)
+        {
+            BalloonColor balloonColor = new BalloonColor();
+            balloonColor.UnlockColor();
+            Debug.Log("PINK COLOR HAS PURCHASED");
+        }
+       
     }
 
     #endregion
