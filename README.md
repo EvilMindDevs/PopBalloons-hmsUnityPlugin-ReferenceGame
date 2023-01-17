@@ -139,56 +139,54 @@ The HMS Unity plugin helps you integrate all the power of Huawei Mobile Services
 
 ## Ads Kit
 
-`Purpose In Project` :  Monetizing with Interstial Ads and Banner Ads.
+`Purpose In Project` :  Monetizing with Interstial Ads, Banner Ads, Native Ads and Splash Ads.
 
 
 `Use In Project` : 
  
- 1. Banner Ads : By calling this method `ShowBanner()` at AdsManager.cs 102.We are calling this method at first,and you can hide banner ads by calling `HideBanner()` at AdsManager.cs 112.
+ 1. Banner Ads and Interstitial Ads : By calling this method `ShowBanner()` at AdsManager.cs 69 and HMSAdsKitManager.Instance.ShowInterstitialAd(); at AdsManager.cs 72.We are calling these methods at first,a nd you can hide banner ads by calling `HideBanner()` at AdsManager.cs 61.
 
    ```csharp
-    #region Ads: Banner
-
-    public void ShowBanner()
+     public void ShowAds()
     {
-        if (!IsAdsActive)
-            return;
+        
+            HMSAdsKitManager.Instance.ShowBannerAd();
+            if (HMSAdsKitManager.Instance.IsInterstitialAdLoaded)
+            {
+                HMSAdsKitManager.Instance.ShowInterstitialAd();
+            }
 
-        GLog.Log($"ShowBanner", GLogName.AdsManager);
+            rewardedAdPanel.SetActive(true);
 
-        HMSAdsKitManager.Instance.ShowBannerAd();
+       
+        
     }
-
-    public void HideBanner()
-    {
-        GLog.Log($"HideBanner", GLogName.AdsManager);
-
-        HMSAdsKitManager.Instance.HideBannerAd();
-    }
-
-    #endregion
   ```
 
 
-2. Interstial Ads : By calling this method `ShowInterstitial()` at AdsManager.cs 145.We are calling this method at the end of sessions.
+2. Rewarded Ads : By calling this method invoking events using HMSAdsKitManager.Instance.OnRewardedAdLoaded at AdsManager.cs 35 and 36  
 
 ```csharp
-    #region Ads: Interstitial
+  
+  HMSAdsKitManager.Instance.OnRewardedAdLoaded = OnRewardedAdLoaded;
+  HMSAdsKitManager.Instance.OnRewardAdCompleted = OnRewardAdCompleted;
 
-    public void ShowInterstitial()
+```
+We give awards when the ads completed on  OnRewardAdCompleted() method at AdsManager.cs 96.
+
+```csharp
+
+    private void OnRewardAdCompleted()
     {
-        if (!IsAdsActive)
-            return;
+        Debug.Log("ON REWARD COMPLETED!");
+        rewardedAdPanel.SetActive(false);
+        TotalScore totalScore = FindObjectOfType<TotalScore>();
+        totalScore.DoubleScore();
 
-        GLog.Log($"ShowInterstitial", GLogName.AdsManager);
-
-        HMSAdsKitManager.Instance.ShowInterstitialAd();
+        didRewardedEarned = true;
     }
 
-    #endregion
 ```
-
-
 
 
 
