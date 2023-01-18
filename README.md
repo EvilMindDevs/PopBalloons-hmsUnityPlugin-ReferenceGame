@@ -1,7 +1,6 @@
 # PopBalloons-hmsUnityPlugin-ReferenceGame
 
-Bloon Popping
-Welcome to Bloon Popping, a fun and challenging game that tests your balloon popping skills! The goal of the game is to pop as many balloons as possible before they reach the top of the screen. Each time you pop a blue, green, or pink balloon, you will earn points. But be careful, if you pop a black balloon, you will lose.
+Welcome to Balloon Popping! A fun and challenging game that tests your balloon popping skills! The goal of the game is to pop as many balloons as possible before they reach the top of the screen. Each time you pop a blue, green, or pink balloon, you will earn points. But be careful, if you pop a black balloon, you will lose.
 
 ![image](https://user-images.githubusercontent.com/41302444/212833336-379f9744-234c-41f9-a3b1-e5bca7090fa2.png)
 
